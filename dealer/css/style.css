@@ -1,0 +1,564 @@
+@charset "utf-8";
+/* CSS Document */
+* {
+   box-sizing: border-box;
+   margin: 0;
+   padding: 0;
+}
+body {font-family: OpenSans; font-size: 14px;}
+html {
+  scroll-behavior: smooth;
+}
+
+a {text-decoration:none;}
+@font-face {
+  font-family: OpenSans;
+  src: url(../fonts/OpenSans-Regular.woff);
+}
+.logo {width:275px; height:71px;}
+.menu-bg {background-color:#fff;}
+.nav-fixed-header {
+    background: #fff;
+    position: fixed;
+    width: 100%;
+    height:100px;
+    z-index: 10;
+    border-bottom: 3px solid #00329f;
+}
+.buy-banner {
+    background-image: url(../img/banner1.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+	background-size: cover;
+    height: 934px;
+}
+.sell-banner {
+    background-image: url(../img/banner4.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+	background-size: cover;
+    height: 940px;
+}
+.banner-title {margin-top:280px; text-transform:uppercase; color:#fff; text-align:center; width:100%; line-height:25px;}
+.sell-banner-title {margin-top:180px; text-transform:uppercase; color:#fff; text-align:center; width:100%; line-height:25px;}
+.banner-title  h1 {line-height:60px; text-align:center;}
+.sell-banner-title  h1 { text-align:center;}
+.form-container {width:100%; margin:0; padding:0; float:left;}
+.form-content {width:100%; margin-top:150px; padding:0; background-color: rgba(255, 255, 255, 0.2); border-radius:25px;}
+.form-content .title {margin-bottom: 15px; -webkit-box-shadow: 0px 10px 5px 0px rgba(0,0,0,0.75);
+-moz-box-shadow: 0px 10px 5px 0px rgba(0,0,0,0.75);
+box-shadow: 0px 10px 5px 0px rgba(0,0,0,0.75);background-color:#44a640; color:#fff; padding:10px; text-align:center; text-transform:uppercase; opacity:1; border-radius:10px;}
+.form-section {width:100%; margin:0; padding: 0px 20px 10px 20px;}
+.form-line {margin:6px 0;}
+.form-section label {color:#fff; margin-bottom:5px;}
+.form-button {font-weight:bold; margin-top: 5px; cursor:pointer; background-color:#44a640; color:#fff; padding:10px; text-align:center; text-transform:uppercase; opacity:1; border-radius:0px;}
+.form-section a{text-decoration:none;}
+.form-button:hover {background-color:#e6a307; color:#fff;}
+.sell-form-content {width:100%; margin-top:50px; padding:0; /*background-color: rgba(0,0,0,.6);*/ background-color: rgba(255, 255, 255, 0.2);   border-radius:25px;}
+.sell-form-content .title {margin-bottom: 15px; -webkit-box-shadow: 0px 10px 5px 0px rgba(0,0,0,0.75);
+-moz-box-shadow: 0px 10px 5px 0px rgba(0,0,0,0.75);
+box-shadow: 0px 10px 5px 0px rgba(0,0,0,0.75);background-color:#44a640; color:#fff; padding:10px; text-align:center; text-transform:uppercase; opacity:1; border-radius:10px;}
+a:hover{text-decoration:none;}
+/*HOME PAGE CSS START*/
+.banner-container {width:100%; float:left; margin-top:70px; padding:0; background-image: url(../img/b1.png); background-repeat: no-repeat;
+background-position: center; background-size: cover; height:519px; border-bottom:3px solid #00329f;}
+.search-bar-container {width:100%; margin:0px; padding:75px 0 0 0; /*background-color: rgba(0,0,0,.6);*/ border-radius:0px; float:left;}
+.search-bar-container h2 {color:#fff; text-align:center; font-size:30px; margin-bottom:10px;text-transform:uppercase;}
+.search-bar-container p {color:#fff; text-align:center; font-size:14px; margin-bottom:20px;}
+.search-button {padding-top:10px;}
+.dealer-flow-container {width:100%; float:left; margin-top:0px; padding:50px 0; background-color:#f9f9f9; text-align:center;}
+.dealer-flow-container h2 {font-size:30px; color: #0053a0; font-weight:bold; margin-bottom:0;}
+.dealer-flow-container h6 {font-size:20px; color: #333; font-weight:600; padding-top:10px;}
+.dealer-flow-container p {font-size:14px; color: #666; }
+.dealer-flow-item {width:100%; float:left; margin-top:40px; padding:0; border:1px solid #dee2e6; background-color:#fff;}
+.dealer-flow-item h2 {font-size:24px; color: #0053a0; font-weight:500; text-align:left; padding:20px;}
+.icon-right {float:right;}
+.dealer-flow-item img {display:block; margin:0 auto; max-width:100%;}
+.dealer-flow-item h3 {font-size:20px; color: #333; padding:20px 20px 10px 20px; text-align:left;}
+.dealer-flow-item p {font-size:15px; color:#666; padding:0px 20px; text-align:justify; min-height:170px;}
+.dealer-flow-item .flow-link {font-size:18px; color: #0053a0; font-weight:500; text-align:left; padding:20px; border-top:1px solid #dee2e6;}
+.dealer-flow-item .flow-link a {text-decoration:none;}
+.dealer-news-container {width:100%; float:left; margin-top:0px; padding:50px 0; background-color:#fff;}
+.dealer-news-container h2 {font-size:30px; color: #0053a0; font-weight:bold; margin-bottom:0; text-align:center;}
+.dealer-news-item {width:100%; float:left; margin-top:30px; padding:0; border:1px solid #dee2e6;}
+.dealer-news-item h2 {font-size:24px; color: #0053a0; font-weight:700; text-align:left; padding:20px;}
+.icon-right {float:right;}
+.dealer-news-item img {display:block; margin:0 auto; max-width:100%;}
+.dealer-news-item h3 {font-size:20px; color: #0053a0; padding:20px 20px 10px 20px; text-align:left; font-weight:bold; height:100px;}
+.dealer-news-item .new-title {font-size:15px; color: #198754; padding:0 20px; text-align:left; text-transform:uppercase; font-weight:bold;}
+.dealer-news-item .date {font-size:14px; color: #333; padding:10px 20px; text-align:left; font-weight:bold;}
+.dealer-news-item p {font-size:15px; color:#666; padding:0px 20px; text-align:justify; min-height:170px;}
+.dealer-news-item .flow-link {font-size:16px; color: #0053a0; font-weight:bold; text-align:left; padding:20px; border-top:1px solid #dee2e6;}
+.dealer-news-item .flow-link a {text-decoration:none;}
+.dealer-form-banner {background-image: url(../img/dealer-bg.jpg); background-repeat: no-repeat; background-position: center; background-size: cover;
+height: 753px; width:100%; float:left; padding:30px 0;}
+.dealer-form-banner h2 {font-size:30px; color: #fff; font-weight:bold; margin-bottom:0; text-align:center;}
+.dealer-form-banner h3 {margin-top:10px; color: #fff; font-size:20px; text-align:center;}
+.dealer-form-banner p {margin-top:10px; color: #fff; font-size:15px; text-align:center;}
+.dealer-form-container {width:100%; float:left; margin:30px 0; padding:30px 20px; background-color: rgba(255, 255, 255, 0.2); border-radius:5px;}
+.dealer-form-container input {margin-bottom:20px;}
+.dealer-form-container select {margin-bottom:20px;}
+.dealer-form-container textarea {margin-bottom:20px;}
+.dealer-plan-container {width:100%; float:left; margin-top:0px; padding:50px 0; background-color:#f9f9f9;}
+.dealer-plan-container h2 {font-size:30px; color: #0053a0; font-weight:bold; text-align:center;}
+.dealer-plan-item {width:100%; float:left; margin-top:30px; padding:25px; border:1px solid #dee2e6; position:relative;}
+.dealer-plan-item .title {width:100%; padding:12px 15px; position:absolute; top:0px; left:0px; background-color:#0053a0; text-align:center; color:#fff; font-size:18px; font-weight:400;}
+.dealer-plan-item ul {list-style:none; margin-top:40px; padding:0; min-height:180px;}
+.dealer-plan-item ul li {padding:10px 0; border-bottom:1px solid #dee2e6; color:#666; font-size:15px;}
+.dealer-plan-item ul li svg {padding-right:10px; color:#44a641; font-size:13px;}
+/*HOME PAGE CSS START*/
+
+/*DEALER PROFILE PAGE CSS START*/
+.dealer-profile-container {width:100%; float:left; margin:125px 0 20px 0; padding:0;}
+.dealer-profile-container h2 {font-size:20px; color: #0053a0; font-weight:bold; text-transform:uppercase; padding-top:10px;}
+.dealer-profile-container h6 {font-size:13px; color: #333; font-weight:600; padding-top:10px;}
+.dealer-profile-details p {font-size:14px; color: #666; margin-bottom:5px;}
+.dealer-profile-details {width:100%; float:left; margin-top:10px; padding:0;}
+.dealer-profile-details ul {list-style:none; padding-left:0px; margin:0 0 10px -10px; }
+.dealer-profile-details ul li {display:inline-block; padding:0 10px; border-right: 1px solid #dee2e6; font-size:14px;}
+.dealer-profile-details ul li svg {padding-right:10px; }
+.dealer-profile-details address {width:80%; color: #0053a0;}
+.dealer-profile-details .no-border {border-right:none; float:right;}
+.dealer-profile-details ul li a {text-decoration:none; color:#333; font-weight:bold;}
+.dealer-profile-image {width:100%; float:left; margin:0; padding:0;}
+.dealer-profile-image img {display:block; margin:0 auto; max-width:100%;}
+.dealer-profile-item {width:100%; float:left; margin:10px 0; padding:0px; border-bottom:1px solid #dee2e6;}
+.dealer-review-container {width:100%; float:left; margin:10px 0 20px 0; padding:10px 0; border-top:1px solid #dee2e6;}
+.dealer-review-container .heading {font-size:24px; }
+.dealer-review-container .fa {font-size: 25px;}
+.dealer-review-container .checked {color: orange;}
+.dealer-review-container .rating {font-size:40px; font-weight:bold; }
+.dealer-review-block {width:100%; float:left; margin:10px 0; padding:10px 0; border-bottom:1px solid #dee2e6; border-top:1px solid #dee2e6;}
+.dealer-review-block img {display:block; margin:0 auto; max-width:100%;}
+/*DEALER PROFILE PAGE CSS END*/
+
+/*LISTING PAGE CSS START*/
+.dealer-search {width:100%; float:left; margin:125px 0 0px 0; padding:20px; box-shadow: 0 1px 4px 1px rgba(0,0,0,.1); border:1px solid #eee;}
+.dealer-search h4{font-weight:bold; font-size:24px; margin-bottom:0; color:#0053a0;}
+.dealer-container {width:100%; float:left; margin:10px 0 30px 0; padding:0;}
+.dealer-filter {width:100%; float:left; margin:0; padding:0;}
+.dealer-filter-item {width:100%; float:left; margin:28px 0 0px 0; padding:0; position:relative; box-shadow: 0 1px 4px 1px rgba(0,0,0,.1);}
+.dealer-filter-item label {margin-bottom:7px;}
+.dealer-filter-item input {margin-bottom:7px;}
+.dealer-filter-item .title {position:relative; margin-top:0px; background:#e7f1ff; text-align:left; padding:15px 20px; width:100%; color:#0d6efd; font-size:16px;}
+.dealer-filter-items {box-shadow: 0 1px 4px 1px rgba(0,0,0,.1); border:1px solid #eee; width:100%; float:left; margin:0; padding:10px; position:relative;}
+.dealer-filter-items .title {position:relative; margin-top:0px; background:#0053a0; text-align:left; padding:10px 20px; width:100%; color:#fff; font-weight:bold; font-size:20px;}
+.dealer-item-container {width:100%; float:left; margin:0; padding:0;}
+.dealer-item {width:100%; float:left; margin:0 0 25px 0; padding:15px 15px 10px 10px; box-shadow: 0 1px 4px 1px rgba(0,0,0,.1); border:1px solid #eee;}
+.dealer-details {margin-left:10px;}
+.dealer-details h4{font-weight:bold; font-size:20px; margin-bottom:0; color:#0053a0;}
+.dealer-details small{font-weight:bold; color:#44a640; }
+.dealer-details address {color:#666; margin-bottom:5px;}
+.dealer-details p {color:#666; margin-bottom:5px;}
+.dealer-btn {margin-top:40px; float:right}
+.results {float:right; margin-bottom:5px;}
+.dealer-pagination {float:right;}
+/*LISTING PAGE CSS END*/
+
+/*CAR DEALER PAGE CSS START*/
+.car-dealer-search {width:100%; float:left; margin:0px 0 0px 0; padding:20px; box-shadow: 0 1px 4px 1px rgba(0,0,0,.1); border:1px solid #eee;}
+.car-dealer-search h4{font-weight:bold; font-size:24px; margin-bottom:0; color:#0053a0;}
+.car-dealer-container {width:100%; float:left; margin:10px 0 30px 0; padding:0;}
+.car-dealer-item-container {width:100%; float:left; margin:0; padding:0;}
+.car-dealer-item {width:100%; float:left; margin:0 0 25px 0; padding:0px; box-shadow: 0 1px 4px 1px rgba(0,0,0,.1); border:1px solid #eee;}
+.car-dealer-image {width:100%; float:left; margin:0; padding:0; position:relative;}
+.car-dealer-image img {display:block; margin:0 auto; max-width:100%;}
+.car-dealer-image .wishlist {position:absolute; top:10px; right:10px; background-image: url(../img/love.png); width:30px; height:30px;}
+.car-dealer-details {width:100%; float:left; margin:0; padding:10px 0; position:relative;}
+.car-dealer-details .best-offer {position:absolute; top:0px; right:100px; background-image: url(../img/best-price.png); width:50px; height:50px;}
+.car-dealer-details .show-me {position:absolute; bottom:10px; right:10px; background-image: url(../img/car-fax.png); width:126px; height:40px;}
+.car-dealer-details .price {position:absolute; top:10px; right:10px; background-color:#0053a1; color:#fff; text-align:center; 
+padding:7px 15px; font-size:16px; font-weight:bold; width:auto;}
+.car-dealer-details h5 {color:#666; font-weight:bold; font-size:15px;}
+.car-dealer-details strong {color:#666;}
+.car-dealer-details h4{font-weight:bold; font-size:20px; margin-bottom:0; color:#0053a0;}
+.car-dealer-details address {color:#666; margin-bottom:5px;}
+.car-dealer-details p {color:#666; margin-bottom:5px;}
+.new {color:#44a641; font-weight:bold;}
+.blue {color:#0053a1;}
+.link {text-decoration:underline;}
+/*CAR DEALER PAGE CSS NED*/
+
+/*VEHICLE HISTORY REPORTS PAGE CSS START*/
+.vhr-container {width:100%; float:left; margin:125px 0 30px 0; padding:30px 0;}
+.vhr-search {width:100%; float:left; margin:0; padding:0;}
+.vhr-search h2 {font-size:30px; color: #0053a0; font-weight:bold;}
+.vhr-search h6 a {text-decoration:underline; font-weight:bold; color:#0053a0;}
+.vhr-search-btn {border-radius:5px; margin-top:30px; padding:10px 15px; text-align:center; color:#fff; font-size:18px; font-weight:bold; background-color:#44a641; width:auto;}
+.carfox-image {width:100%; float:left; margin:0; padding:0;}
+.carfox-image img {display:block; margin:0 auto; max-width:100%;}
+.carfox-check-container {width:100%; float:left; margin-top:0px; padding:50px 0; background-color:#f9f9f9;}
+.carfox-check-container h2 {font-size:30px; color: #0053a0; font-weight:bold; text-align:center;}
+.carfox-check-item {width:100%; float:left; margin-top:30px; padding:25px 20px; border:1px solid #dee2e6; position:relative;  background-color:#fff; height:360px;}
+.carfox-check-item .title {text-transform:uppercase; width:100%; padding:12px 15px; position:absolute; border-bottom:1px solid #dee2e6; top:0px; left:0px; background-color:#fff; text-align:center; color:#0053a0; font-size:18px; font-weight:400;}
+.carfox-check-item ul {list-style:none; margin-top:40px; padding:0; }
+.carfox-check-item ul li {padding:5px 0; color:#666; font-size:14px;}
+.carfox-check-item ul li svg {padding-right:10px; color:#44a641; font-size:13px;}
+.carfox-check-btn {border-radius:5px; margin-top:30px; padding:10px 15px; text-align:center; color:#fff; font-size:18px; font-weight:bold; background-color:#44a641; width:250px;}
+.carfox-partner-container {width:100%; float:left; margin-top:0px; padding:50px 0 25px 0; background-color:#fff;}
+.carfox-partner-container h2 {font-size:24px; color: #0053a0; font-weight:bold; text-align:center; margin-bottom:40px;}
+.carfox-faq-container {width:100%; float:left; margin-top:0px; padding:50px 0 75px 0; background-color:#fff;}
+.carfox-faq-container h3 {font-size:24px; color: #0053a0; font-weight:bold; text-align:center; margin-bottom:40px;}
+.carfox-blog-container {width:100%; float:left; margin-top:0px; padding:50px 0 75px 0; background-color:#0053a0;}
+.carfox-blog-container h2 {font-size:24px; color: #fff; font-weight:bold; text-align:center; margin-bottom:40px;}
+.carfox-blog-item {width:100%; float:left; margin-top:10px; padding:20px; border:1px solid #dee2e6; position:relative; 
+ height:400px; background-color:#fff; box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);}
+.carfox-blog-item img {display:block; margin:0 auto; max-width:150px; border-radius:100%; border:5px solid #0053a0; }
+.carfox-blog-item h3 {font-size:20px; color: #333; font-weight:bold; text-align:center; margin:10px 0; 
+border-bottom:1px solid #dee2e6; padding:0 0px 10px 0px;}
+.carfox-blog-item p {font-size:15px; color: #333;}
+.carfox-blog-item svg {font-size:50px; text-align:center; color:#44a641;}
+.carfox-selling-container {width:100%; float:left; margin-top:0px; padding:50px 0 50px 0; background-color:#f9f9f9;}
+.carfox-selling-image {margin-top:0px;}
+.carfox-selling-image img {display:block; margin:0 auto; max-width:100%;}
+.carfox-selling-content {margin:60px 0 0 25px;}
+.carfox-selling-content h2 {font-size:30px; color: #333; font-weight:bold;}
+.carfox-selling-content p {font-size:15px; color: #333;}
+.carfox-selling-btn {border-radius:5px; margin-top:30px; padding:10px 15px; text-align:center; 
+color:#fff; font-size:18px; font-weight:bold; background-color:#0053a0; width:250px;}
+/*VEHICLE HISTORY REPORTS PAGE CSS END*/
+
+/*CAR VALUE PAGE CSS START*/
+.car-value-container {width:100%; float:left; margin:100px 0 30px 0; padding:30px 0;}
+.car-value-search {width:100%; float:left; margin:0; padding:0;}
+.car-value-search h2 {font-size:30px; color: #0053a0; font-weight:bold;}
+.car-value-search label {font-size:18px; color: #0053a0; font-weight:bold; margin-bottom:10px;}
+.car-value-search h6 {font-size:15px;}
+.car-value-search h6 a {text-decoration:underline; font-weight:bold; color:#0053a0;}
+.car-value-search-btn {border-radius:5px; margin-top:10px; padding:10px 15px; text-align:center; color:#fff; font-size:18px; font-weight:bold; background-color:#44a641; }
+.car-value-image {width:100%; float:left; margin:0; padding:0;}
+.car-value-image img {display:block; margin:0 auto; max-width:100%;}
+.car-compare-container {width:100%; float:left; margin:10px 0 30px 0; padding:50px 0 50px 0; background-color:#f9f9f9;}
+.car-compare-container h2 {font-size:30px; color: #0053a0; font-weight:bold; text-align:center;}
+.car-compare-container h6 {text-align:center;}
+.car-compare-container .table > :not(caption) > * > *  {padding:20px 10px;}
+.car-compare-container .table > :not(caption) > * > * svg {color:#44a641; font-size:20px;}
+.car-compare-container tbody, td, tfoot, th, thead, tr {border-style: inherit;}
+/*CAR VALUE PAGE CSS START*/
+
+
+/*USED CARS SEARCH START*/
+.used-cars-search-container {width:100%; float:left; margin:100px 0 0px 0; padding:30px 0; background-image: url(../img/pat.jpg); background-repeat:repeat;}
+.used-cars-search-container h1{text-align:center; text-transform:uppercase; font-size:30px;}
+.used-cars-form-bg  {width:100%; float:left; margin:30px 0 50px 0; padding:50px; background-color:#fff; border-radius:25px; position:relative; box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);}
+.used-cars-form-bg .title {text-transform:uppercase; width:auto; padding:12px 20px; position:absolute; border-radius:10px;
+border-bottom:1px solid #dee2e6; top:-20px; left:4%; background-color:#44a441; text-align:center; color:#fff; font-size:18px; font-weight:400;}
+.used-cars-form-item {width:100%; float:left; margin:10px 0; padding:0; }
+.used-cars-form-item label {margin-bottom:7px;}
+.used-cars-form-item h6 {font-size:14px; font-weight:bold;}
+.used-cars-form-item img {display:block; margin:10px auto; max-width:100%; border:1px solid #eee; cursor:pointer; }
+.used-cars-form-item img:hover {border:1px solid #ccc;}
+.used-cars-form-item .form-check {margin-left: 5px;}
+/*USED CARS SEARCH END*/
+
+/*CAR DETAILS PAGE CSS START*/
+.car-details-container {width:100%; float:left; margin:150px 0 20px 0; padding:0; position:relative;}
+.car-details-container p {text-align:justify; margin-bottom:10px;}
+.car-details-image {width:100%; float:left; margin:0; padding:0;}
+.car-details-content {width:100%; float:left; margin:0; padding:0;}
+.car-details-content h2 {font-size:20px; color: #0053a0; font-weight:bold; text-transform:uppercase; padding-top:0px;}
+.car-details-content h6 {font-size:15px; color: #333; font-weight:bold; padding-top:10px;}
+.car-details-content .price {font-size:24px; color:#333; font-weight:600;}
+.car-details-content .price svg {margin-right:5px;}
+.car-details-content .heading {font-size:13px; font-weight: 700; line-height: 1.25; color:#333; padding-bottom:2px;}
+.car-details-content .text {font-size:12px; color:#666;}
+.car-details-content .icon {margin-right:15px; font-size:25px; color:#666;}
+.term {font-family: arial; font-size: 11px; color: #656565; line-height: 1.7; letter-spacing: -.14px;}
+.columns {
+  -moz-column-count: 3;
+  -moz-column-gap: 1em;
+  -webkit-column-count: 3;
+  -webkit-column-gap: 1em;
+  column-count: 3;
+  column-gap: 1em;
+}
+.columns ul {
+  margin-top: 0;
+  padding:0;
+}
+.columns ul li {list-style-type:none; line-height:27px; color:#666;}
+.columns ul li svg { margin-right:10px; font-size:10px; color:#666;}
+.related-cars-container {width:100%; float:left; margin:10px 0 10px 0; padding:0;}
+.related-cars-container h2 {font-size:20px; color: #0053a0; font-weight:bold; text-transform:uppercase; padding-top:0px;}
+.related-cars-container p {font-size:14px;}
+.tab-title {font-size:16px;}
+.accept {color:#999;}
+/*CAR DETAILS PAGE CSS END*/
+
+/*LOGIN PAGE CSS START*/
+.login-container {width:100%; float:left; margin:100px 0 0px 0; padding:30px 0; background-image: url(../img/pat.jpg); background-repeat:repeat;}
+.login-form-content {width:100%; float:left; margin:30px 0 50px 0; padding:50px; background-color:#fff; border-radius:25px; position:relative; box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);}
+.login-form-image {width:100%; float:left; margin:0; padding:0;}
+.login-form-image img {display:block; margin:0px auto; max-width:100%; }
+.login-form-contents {width:100%; float:left; margin:0; padding:0;}
+/*LOGIN PAGE CSS END*/
+
+/*SIGNUP PAGE CSS START*/
+.signup-container {width:100%; float:left; margin:100px 0 0px 0; padding:30px 0; background-image: url(../img/pat.jpg); background-repeat:repeat;}
+.signup-container h1{text-align:center; text-transform:uppercase; font-size:30px;}
+.signup-form-bg  {width:100%; float:left; margin:30px 0 50px 0; padding:50px; background-color:#fff; border-radius:25px; position:relative; box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);}
+.signup-form-bg .title {text-transform:uppercase; width:auto; padding:12px 20px; position:absolute; border-radius:10px;
+border-bottom:1px solid #dee2e6; top:-20px; left:4%; background-color:#44a441; text-align:center; color:#fff; font-size:18px; font-weight:400;}
+.signup-form-item {width:100%; float:left; margin:10px 0; padding:0; }
+.signup-form-image {width:100%; float:left; margin:0; padding:50px 0;}
+.signup-form-image img {max-width:100%; margin:0 auto; display:block;}
+.signup-form-content {width:100%; float:left; margin:0; padding:75px 50px;}
+.signup-form-content h2 {font-size:24px; text-align:center; color:#000000; padding-bottom:10px; font-weight:bold;}
+.signup-form-content h4 {font-size:16px; text-align:center; color:#b5b5c3; padding-bottom:10px;}
+.signup-form-content label {padding-bottom:7px;}
+.signup-form-content input {padding-bottom:7px;}
+.signup-form-content .button {width:100%;background-color:#44a441;text-align:center;color:#fff;font-size:18px;line-height:30px; padding:7px;float:left;margin-top:20px;}
+.validation {color:#ce3535;padding-left:3px;}
+/*SIGNUP PAGE CSS END*/
+
+/*VIN REPORT PAGE CSS START*/
+.vin-report-container {width:100%; float:left; padding:150px 0 50px 0; margin:0; background-color:#e5e5e5;}
+.vin-report-left-side {width:100%; float:left; padding:0; margin:0px; position:fixed;}
+.vin-report-sidebar {width:300px; float:left; padding:0; margin:0px; position:fixed;z-index: 999; border-radius: 4px;box-shadow: 0 4px 4px rgba(0,0,0,.25);}
+.vin-report-menu {width:300px; float:left; padding:0; margin:60px 0 0 0;background-color:#ffffff;border-radius: 4px;box-shadow: 0 4px 4px rgba(0,0,0,.25);position:fixed;}
+.vin-report-details {width:100%; float:left; padding:0; margin:0;}
+.vin-report-details h1{text-align:left; font-size:32px;}
+.vin-report-details h2{text-align:left; font-size:25px;}
+.vin-report-download {float:right;}
+.vin-report-download ul {margin:0; padding:0;}
+.vin-report-download ul li {list-style:none;display:inline-block; padding:0 0 0 7px; font-size:15px;}
+.vin-report-download ul li a {color:#0053a1; text-decoration:none;}
+.vin-report-download ul li a:hover {color:#000000; text-decoration:none;}
+.vin-vehicle-details {width:100%; float:left; padding:25px 0; margin:0;}
+.vin-vehicle-image {width:100%; float:left; padding:0; margin:0;}
+.vin-vehicle-image img  {display:block; margin:0px auto; max-width:100%; }
+.vin-vehicle-info {width:100%; float:left; padding:10px; margin:0 0 10px 0; background-color:#ffffff;border-radius: 4px;box-shadow: 0 4px 4px rgba(0,0,0,.25);}
+.vin-vehicle-info-items {width:100%; float:left; padding:6px; margin:0; border-bottom: 1px solid #d2d2d2;}
+.vin-vehicle-info-title {text-align:left; font-size:15px;float:left;} 
+.vin-vehicle-info-details {text-align:right; font-weight:bold; font-size:15px;float:right;} 
+.vin-vehicle-info-items:last-child {border: none;}
+.vin-vehicle-box-item {width:100%; float:left; padding:0; margin:0;}
+.vin-vehicle-box-items {width:100%; float:left; padding:10px; margin:0 0 20px 0; background-color:#ffffff;border-radius: 4px;box-shadow: 0 4px 4px rgba(0,0,0,.25); height:200px; position:relative; cursor:pointer;}
+.box-warning {border: 1px solid #a2260b;}
+.vin-vehicle-box-items .image {padding:10px 0; height:75px; }
+.vin-vehicle-box-items .image img { margin:0 auto; display:block;}
+.vin-vehicle-box-items .title {padding:7px 0; text-align:center; font-weight:bold; font-size:16px; color:#000000; height:60px;}
+.vin-vehicle-box-items p {padding:7px 0; text-align:center; font-size:15px; color:#b4b4b4;}
+.vin-vehicle-box-items .clear { position:absolute; top:10px; right:10px;}
+.vin-vehicle-box-items .warning { position:absolute; top:10px; right:10px;}
+.vin-vehicle-box-items .label { position:absolute; top:10px; right:10px;}
+.vehicle-info-box {width:100%; float:left; padding:20px; margin:0 0 20px 0; background-color:#ffffff;border-radius: 4px;box-shadow: 0 4px 4px rgba(0,0,0,.25);}
+.vehicle-info-box h2 {text-align:left; font-size:25px;}
+.vehicle-info-box-items {width:100%; float:left; padding:7px; margin:0; border-bottom: 1px solid #d2d2d2;}
+.vehicle-info-box-items:last-child {border: none;}
+.vertical-menu {width: 100%; float:left; border-radius: 4px;box-shadow: 0 4px 4px rgba(0,0,0,.25);}
+.vertical-menu a {background-color: #fff;color: black;display: block;padding: 12px;text-decoration: none;}
+.vertical-menu a:hover {background-color: #0053a0;color: white;}
+.vertical-menu a.active {background-color: #04AA6D;color: white;}
+.menu-badge {float:right;}
+.dropdown-menu {width:300px;}
+/* === HEADING STYLE #3 === */
+.three h1 {
+  font-size: 24px;
+  font-weight: 500;
+  letter-spacing: 0;
+  line-height: 1.5em;
+  padding-bottom: 15px;
+  position: relative;
+  margin-bottom: 7px;
+}
+.three h1:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 5px;
+  width: 55px;
+  background-color: #04AA6D;
+}
+.three h1:after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 2px;
+  height: 1px;
+  width: 95%;
+  max-width: 255px;
+  background-color: #04AA6D;
+}
+
+.ownership-history-box {width:100%; float:left; padding:20px; margin:0 0 20px 0; background-color:#ffffff;border-radius: 4px;box-shadow: 0 4px 4px rgba(0,0,0,.25);}
+.odometer-events-box {width:100%; float:left; padding:20px;  margin:0 0 20px 0;  background-color:#ffffff;border-radius: 4px;box-shadow: 0 4px 4px rgba(0,0,0,.25);}
+.insurance-records-box {width:100%; float:left; padding:20px;  margin:0 0 20px 0;  background-color:#ffffff;border-radius: 4px;box-shadow: 0 4px 4px rgba(0,0,0,.25);}
+.title-history-info-box {width:100%; float:left; padding:20px;  margin:0 0 20px 0;  background-color:#ffffff;border-radius: 4px;box-shadow: 0 4px 4px rgba(0,0,0,.25);}
+.junk-salvage-box {width:100%; float:left; padding:20px;  margin:0 0 20px 0;  background-color:#ffffff;border-radius: 4px;box-shadow: 0 4px 4px rgba(0,0,0,.25);}
+.auction-sales-box {width:100%; float:left; padding:20px;  margin:0 0 20px 0;  background-color:#ffffff;border-radius: 4px;box-shadow: 0 4px 4px rgba(0,0,0,.25);}
+/*VIN REPORT PAGE CSS END*/
+
+/*FOOTER CSS START*/
+.footer {
+    background-color: #000;
+	width:100%;
+	float:left;
+	padding: 10px 0;
+}
+.footer .copyright {
+    color: #e5e5e5;
+    font-weight: 600;
+}
+.copyright a {
+    color: #44a640;
+    margin-left: 3px;
+    padding-right: 3px;
+	text-decoration:none;
+}
+.footer p {
+    margin-bottom: 0;
+    line-height: 50px;
+    font-size: 14px;
+    font-weight: 400;
+}
+.copyright p span {
+    color: #d1caca;
+}
+.footer .copyright p, .bottom .copyright a:hover{
+    color: #6c6d83;
+}
+/*FOOTER CSS END*/
+
+/*PRICE SLIDER CSS START/*
+/* This line can be removed it was just for display on CodePen: */
+.slider-labels {
+  margin-top: 10px;
+}
+.caption-left {font-size:12px; color:#0053a1; margin-top:10px; float:left; width:50%; text-align:left; font-weight:bold;}
+.caption-right {font-size:12px; color:#0053a1; margin-top:10px; float:left; width:50%; text-align:right; font-weight:bold;}
+.range-title {margin-bottom: 10px !important;}
+/* Functional styling;
+ * These styles are required for noUiSlider to function.
+ * You don't need to change these rules to apply your design.
+ */
+.noUi-target,.noUi-target * {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -ms-touch-action: none;
+  touch-action: none;
+  -ms-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.noUi-target {
+  position: relative;
+  direction: ltr;
+}
+.noUi-base {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  z-index: 1;
+/* Fix 401 */
+}
+.noUi-origin {
+  position: absolute;
+  right: 0;
+  top: 0;
+  left: 0;
+  bottom: 0;
+}
+.noUi-handle {
+  position: relative;
+  z-index: 1;
+}
+.noUi-stacking .noUi-handle {
+/* This class is applied to the lower origin when
+   its values is > 50%. */
+  z-index: 10;
+}
+.noUi-state-tap .noUi-origin {
+  -webkit-transition: left 0.3s,top .3s;
+  transition: left 0.3s,top .3s;
+}
+.noUi-state-drag * {
+  cursor: inherit !important;
+}
+
+/* Painting and performance;
+ * Browsers can paint handles in their own layer.
+ */
+.noUi-base,.noUi-handle {
+  -webkit-transform: translate3d(0,0,0);
+  transform: translate3d(0,0,0);
+}
+
+/* Slider size and handle placement;
+ */
+.noUi-horizontal {
+  height: 5px;
+}
+
+.noUi-horizontal .noUi-handle {
+  width: 18px;
+  height: 18px;
+  border-radius: 0%;
+  left: -7px;
+  top: -7px;
+  background-color: #44a640;
+}
+
+/* Styling;
+ */
+.noUi-background {
+  background: #0053a1;
+}
+
+.noUi-connect {
+  background: #44a640;
+  -webkit-transition: background 450ms;
+  transition: background 450ms;
+}
+
+.noUi-origin {
+  border-radius: 2px;
+}
+
+.noUi-target {
+  border-radius: 2px;
+}
+
+.noUi-target.noUi-connect {
+}
+
+/* Handles and cursors;
+ */
+.noUi-draggable {
+  cursor: w-resize;
+}
+
+.noUi-vertical .noUi-draggable {
+  cursor: n-resize;
+}
+
+.noUi-handle {
+  cursor: default;
+  -webkit-box-sizing: content-box !important;
+  -moz-box-sizing: content-box !important;
+  box-sizing: content-box !important;
+}
+
+.noUi-handle:active {
+  border: 8px solid #44a640;
+  border: 8px solid rgba(53,93,187,0.38);
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  left: -14px;
+  top: -14px;
+}
+
+/* Disabled state;
+ */
+[disabled].noUi-connect,[disabled] .noUi-connect {
+  background: #B8B8B8;
+}
+
+[disabled].noUi-origin,[disabled] .noUi-handle {
+  cursor: not-allowed;
+}
+/*PRICE SLIDER CSS END/*
+

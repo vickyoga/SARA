@@ -1,0 +1,1183 @@
+/*MEDIA QUERY START*/
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width:360px) {
+.about-video-bg {width: 100%; height:300px; margin-top:30px;}
+.about-video-title {font-size:3.50rem; line-height:50px;}
+.leadership-kylee-banner {
+    width: 100%;
+    height:130vh !important;	
+}
+.title-section h4 {
+    color: #fff;
+    font-size: 1.50rem;
+}
+.title-section {
+    left: 58%;
+}
+.investor-relations-container {
+    margin-bottom: 0px;
+	background-color: #000;
+    padding:15px;
+}
+.investor-relations-text {
+    padding: 50px;
+	width:100%;
+	margin-top: 0px;
+	background-color: #fff;
+}
+.investor-relations-image .title {font-size:2rem;}
+.investor-relations-text h5 {font-size:2rem;}
+.investor-box-desktop{display:none;}
+.investor-box-mobile{display:block;}
+}
+
+@media only screen and (max-width: 600px) {
+/*HOME PAGE START*/
+#fullpage {overflow-x:hidden; height:auto;}
+.col {width: 50%;flex: auto;}
+.mobile-banner {display:block;}
+.desktop-banner {display:none;}
+.carousel-caption {bottom:26rem;}
+.banner-container h3 {font-size:3rem; line-height:50px;}
+.d-block {display: none !important;}
+.mouse {display:none;}
+.by-1 {background-color: rgba(0,0,0,.6) !important;}
+.d-menu {display:none;}
+.m-menu {display:block;}
+.banner-title-caption {
+	display: none;
+    position: absolute;
+    top: 36%;
+    color: #fff;
+    left: -10%;
+    width: 50%;
+}
+.banner-container{padding-top:0px; background:#000;}
+.banner-title-caption h3{font-size:14px; line-height:10px;}
+.banner-title-caption p{font-size:10px;}
+.menu-bg-dark {
+    padding-top:0px;
+	overflow-x: hidden;
+	background-color: rgba(0,0,0,.3);
+}
+.no-display {display:none;}	
+.navbar-expand-md .navbar-nav .nav-link {
+    padding:10px;
+	line-height:20px;
+
+}
+.footer-containter {padding: 25px 10px 0 10px;}
+.copyright {
+    margin-top: 0px;
+    text-align: center;
+	width: 100%;
+}
+.about-container {width: 100%; height:130vh;}
+.about-content {padding: 50px 25px 0 25px;}
+.about-hwaseung-video { padding-top: 0px; }
+.about-content h3 {font-size: 3rem;}
+.about-content p {font-size: 15px;}
+.about-video-bg {width: 100%; height:350px; margin-top:30px;}
+.about-video-title {font-size:3.50rem; line-height:50px;}
+.business-container {
+    width: 100%;
+    height: auto;
+	background-image: url("../../img/mb-bg.webp");
+}
+.business-content {
+    text-align: left;
+    padding: 50px 10px 0 10px;
+}
+
+.business-content h3 {
+    font-size: 3rem;
+    line-height:40px;
+}
+
+.business-content p {
+    margin-top: 10px;
+    line-height: 20px;
+    font-size: 1rem;
+    width: 100%;
+}
+.business-button {
+    padding-top: 0px;
+}
+
+.business-button1 {
+    margin-top: 0px;
+    float: left;
+}
+.business-button2 {
+    margin-top: 10px;
+    float: left;
+}
+.business-ventures-item {width:50%;padding:10px 0;}
+.image {display: block;width:200%;height: auto;}
+.investor-container {
+    width: 100%;
+    height: 100vh;
+}
+.investor-content {
+    text-align: left;
+    padding: 50px 10px 0 10px;
+}
+.investor-content h3 {
+    font-size: 2rem;
+	line-height:40px;
+}
+.investor-content p {
+    width: 100%;
+	font-size: 1rem;
+}
+.investor-button {
+    margin-top: 30px;
+}
+
+.investor-box-content {
+  margin-top: 0;
+  padding-bottom: 50px;
+}
+.investor-box {width: 100%;padding: 10px 15px;}
+.investor-bb {
+  border-bottom: 1px solid #999;
+}
+.investor-br {
+  border-right: 1px solid #999;
+}
+.investor-box-item {width:50%;}
+.sustain-container {
+    width: 100%;
+    height: 100vh;
+}
+.sustain-content {
+    text-align: left;
+    padding: 250px 25px 0 10px;
+}
+.sustain-content h3 {
+    font-size: 3rem;
+}
+.sustain-content p {
+    width: 100%;
+    font-size: 1rem;
+}
+.sustain-button {
+    margin-top: 30px;
+}
+.career-containers {
+    width: 100%;
+    height: 100vh;
+	background-image: linear-gradient(rgba(0,0,0,.6), rgba(0,0,0,.6)), url("../../img/mb-career.webp");
+}
+.career-image {background:#fff;height: auto;}
+.career-contents {
+    text-align: left;
+    padding: 0px 25px 0 10px;
+}
+.career-contents h3 {
+    font-size: 3rem;
+}
+.career-contents p {
+    width: 100%;
+    font-size: 1rem;
+}
+.career-text {
+    float: left;
+    width: 100%;
+	padding-right: 0px;
+}
+.career-button {
+    padding-top:20px;
+}
+.footer-links {
+    margin-bottom: 10px;
+}
+.footer-sub-links {
+    margin-bottom: 10px;
+    margin-left: 15px;
+    margin-top: -10px;
+}
+.footer-logo {width:80%; padding-bottom: 25px;}
+.family-site {width: 100%; padding-top: 20px;}
+.footer-icons {text-align: center;}
+.footer_link_show {display:none;}
+/*HOME PAGE END*/
+/*CONTACT PAGE START*/
+.contact-banner {
+    width: 100%;
+    height: 100vh;
+}
+.contact-content {
+    padding-top: 125px;
+}
+.contact-container {height:100vh;}
+.vertical-line {
+    border-left: 1px solid #fd495d;
+    height: auto;
+    margin-left:30px;
+}
+.vertical-line h6 {
+    width: 96%;
+    margin-top: 10px;
+	left: 3%;
+}
+.vertical-lines h6 {
+    width: 96%;
+    margin-top: 10px;
+	line-height: 25px;
+	left: 3%;
+}
+.vertical-liness h6 {
+    width: 100%;
+    margin-top: 10px;
+	left: 3%;
+}
+.contact-image {
+    width: 100%;
+	height:100vh;
+}
+.contact-text {
+    width: 100%;
+    padding: 20px;
+}
+.address-box {
+    width: 100%;
+    margin-top: 10px;
+	margin-bottom: 50px;
+}
+.address-title {
+    width: 25%;
+}
+.address-info {
+    width: 75%;
+}
+/*CONTACT PAGE END*/
+/*CAREERS PAGE START*/
+.career-banner {
+    width: 100%;
+    height:100vh;
+	background-image: linear-gradient(rgba(0,0,0,.6), rgba(0,0,0,.6)), url("../../img/career-banner-mobile.webp");
+}
+.career-content {
+    padding-top: 125px;
+}
+.vertical-lines {
+    border-left: 1px solid #fd495d;
+    height: auto;
+    margin-left: 30px;
+}
+.vertical-lines h6 {
+    width: 100%;
+	line-height: 25px;
+}
+.career-container {
+    margin-top:20px;
+}
+.opening-list {
+    margin-top: 10px;
+}
+.opening-box {
+    margin-top: 0px;
+}
+.opening-title {
+    width: 65%;
+	font-size: 17px;
+}
+.opening-number {
+    width: 15%;
+}
+.opening-button {
+    width: 20%;
+}
+.life-container {
+    margin-top: 0;
+}
+.life-text {
+    width: 100%;
+    padding:25px;
+}
+.life-text h3 {text-align:left;font-size:2.50rem;}
+.life-image {
+    width: 100%;
+    height:100vh;
+}
+.life-container {height:100vh; padding:0; margin-top: 50px;}
+.benefit-content {margin-top: -35%;}
+.benefit-content h4 {font-size:2rem;}
+.benefit-container {
+    padding: 25px 0;
+}
+.benefit-content img{
+	max-width:100%;
+}
+.moments-container {
+    margin-top: 25px;
+}
+div#columns figure img {
+    max-width: 95%;
+}
+.opening-list ul li {width: 33.3%;float: left;}
+/*CAREERS PAGE END*/
+
+/*NEWSROOM PAGE START*/
+.newsroom-banner {
+    width: 100%;
+    height:100vh;
+}
+.newsroom-content {
+    padding-top: 125px;
+}
+.vertical-liness {
+    border-left: 1px solid #fd495d;
+    height: auto;
+    margin-left: 50px;
+	line-height: 25px;
+}
+.vertical-liness h6 {
+    width: 96%;
+	line-height: 25px;
+}
+.news-container {
+    margin: 20px 0;
+}
+.news-text {
+    padding: 20px;
+}
+.news-button {
+    margin-top: 20px;
+}
+.blog-container {
+    margin: 0px;
+}
+.blog-box {
+    margin-bottom: 20px;
+}
+.pagination {
+    display: inline-block;
+    margin-bottom: 25px;
+}
+/*NEWSROOM PAGE END*/
+
+/*SUSTAINABILITY PAGE START*/
+.sustainability-banner {
+    width: 100%;
+    height:100vh;
+}
+.sustainability-content h3 {font-size: 3.50rem;}
+.sustainability-content {
+    padding-top: 125px;
+}
+.sustainability-container {
+    margin: 25px 0 0 0;
+}
+.sustainability-container h3 {
+    font-size: 3rem;
+}
+.sustainability-container p {
+    text-align: justify;
+}
+.goal-container {
+    margin: 0;
+}
+.goal-box1 {
+    margin: 0 0 12px 0;
+}
+.goal-container h5 {
+    font-size: 2.50rem;
+}
+.footer-containter {
+	margin-top: 0;
+}
+/*SUSTAINABILITY PAGE END*/
+
+/*INVESTOR RELATIONS PAGE START*/
+.investor-relations-banner {
+    width: 100%;
+    height:100vh;
+}
+.investor-relations-content {
+    padding-top: 125px;
+}
+.investor-relations-content h3 {
+    font-size:4rem;
+    line-height:55px;
+}
+.investor-relations-container {
+    margin-bottom: 0px;
+	background-color: #000;
+    padding:15px;
+}
+.investor-relations-text {
+    padding: 50px;
+	width:100%;
+	margin-top: 0px;
+	background-color: #fff;
+}
+.investor-relations-image .title {font-size:2rem;}
+.investor-relations-text h5 {font-size:2rem;}
+.investor-relations-image {
+    width: 100%;
+	margin-top: 0px;
+}
+.investor-box-desktop{display:none;}
+.investor-box-mobile{display:block;}
+
+/*INVESTOR RELATIONS PAGE END*/
+
+/*BUSINESS VENTURES PAGE START*/
+.business-verticals-banner {
+    width: 100%;
+    height:100vh;
+}
+.business-verticals-content {
+    padding-top: 125px;
+}
+.footwear-bg {
+    width: 100%;
+    height:100vh;
+}
+.apparel-bg {
+    width: 100%;
+    height:100vh;
+}
+.business-verticals-section {
+    height:100vh;
+    width: 80%;
+    padding:200px 20px 0 20px;
+	background-color: rgba(255, 255, 255, 0.5);
+}
+.business-verticals-section .title {
+    font-size: 2rem;
+    line-height: 40px;
+    padding-bottom: 10px;
+}
+.business-verticals-button {
+    margin-top: 0px;
+    float: left;
+}
+.materials-bg {
+    width: 100%;
+    height:100vh;
+}
+.supply-bg {
+    width: 100%;
+    height:100vh;
+    margin-bottom: 0;
+}
+/*BUSINESS VENTURES PAGE END*/
+
+/*BUSINESS STRATEGY PAGE START*/
+.business-strategy-banner {
+    width: 100%;
+    height:100vh;
+}
+.business-strategy-content {
+    padding-top: 125px;
+}
+.business-strategy-container {
+    margin-top: 10px;
+}
+.business-strategy-contents h3 {
+    font-size: 2.50rem;
+}
+.business-strategy-text {
+    margin-top: 10px;
+}
+.business-strategy-text h4 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+    white-space: pre;
+}
+/*BUSINESS STRATEGY PAGE END*/
+
+/*LEADERSHIP MANAGEMENT PAGE START*/
+.leadership-management-banner {
+    width: 100%;
+    height:100vh;
+}
+.leadership-management-content {
+    padding-top: 125px;
+}
+.leadership-management-content h3 {
+    font-size: 2.50rem;
+	line-height: 40px;
+    margin-bottom: 10px;
+}
+.leadership-kylee-banner {
+    width: 100%;
+    height: 100vh;
+	background-image: linear-gradient(rgba(0,0,0,.6), rgba(0,0,0,.6)), url("../../img/mb-kylee.webp");
+}
+.leadership-kylee-content {
+    float: left;
+    width: 100%;
+    padding: 350px 25px 0 25px;
+    position: relative;
+}
+.ceo-message-container {margin:0;padding: 20px 0;}
+.ceo-message-container p {font-size: 15px;margin-top: 0px;padding: 10px 20px;}
+.leadership-kylee-content h4 {color:#fff;}
+.leadership-kylee-content h6{color:#fff;}
+.leadership-kylee-content p {color:#fff;}
+.leadership-kylee-content2 {
+    float: left;
+    width: 100%;
+    position: absolute;
+    right: 0px;
+    padding:0px 25px 0 25px;
+}
+.leadership-kylee-content2 p {
+    font-size: 12px;
+    margin-top: 0px;
+}
+.leadership-kylee-content2 .arrow-left {
+    left: 160px;
+    top: -365px;
+}
+.leadership-management-container {
+    margin: 20px 0;
+}
+.leadership-management-item {
+    margin-bottom: 0px;
+}
+.leadership-management-image {
+    width: 100%;
+}
+.leadership-management-text {
+    width: 100%;
+    height: auto;
+    margin: 0px;
+    padding: 25px;
+}
+.heritage-item {
+    width: 100%;
+    float: left;
+    margin: 20px 0 15px 0;
+    text-align: center;
+}
+/*LEADERSHIP MANAGEMENT PAGE END*/
+
+/*HERITAGE & VALUE PAGE START*/
+.p-left {text-align:left;}
+.about-hwaseung-enterprise {height:100vh;background-image: url("../../img/mb-bg.webp");}
+.heritage-value-content h3 {line-height:60px;}
+.about-hs-group {height:auto;background-image: url("../../img/mb-bg.webp");}
+.heritage-value-contents {padding:20px;}
+.heritage-value-banner {
+    width: 100%;
+    height:100vh;
+}
+.heritage-value-content {
+    padding-top: 125px;
+}
+.heritage-value-container {
+    margin: 20px 0;
+}
+.heritage-value-left {
+    margin-right: 0px;
+    margin-bottom: 20px;
+	padding-top: 25px;
+}
+.heritage-value-right {
+    margin-top: 0px;
+    margin-bottom: 20px;
+}
+.heritage-value-contents h3 {
+    font-size: 3rem;
+    line-height: 35px;
+    text-align: center;
+}
+.heritage-value-contents p {font-size: 15px;}
+.heritage-value-contents h4 {text-align: center;}
+.mission-container {width: 100%;height:100vh;}
+.mission-image img {max-width:100%;}
+.mission-count {bottom: -100px;}
+.heritage-item h4 {
+  text-align: center;
+}
+.heritage-value-image {
+    margin-top: 0px;
+    margin-bottom: 20px;
+}
+.heritage-value-text {
+    margin-left: 0px;
+    margin-bottom: 20px;
+}
+.heritage-number {
+    line-height: 70px;
+    margin-left: 0;
+    margin-top: 0px;
+    text-align: center;
+}
+.heritage-number br {display:none; }
+.heritage-items {
+    border-top: 1px solid #ddd;
+    float: left;
+    padding-left: 0px;
+    margin: 20px 0;
+    padding-top: 10px;
+	border-left: none;
+}
+.heritage-image {
+    margin-bottom: 20px;
+}
+.heritage-text {
+    margin-bottom: 0px;
+}
+.heritage-text p {
+    margin-top: 10px;
+}
+.leadership-bg {
+    width: 100%;
+    height:300px;
+    margin-top: 25px;
+    margin-bottom: 0px;
+}
+.leadership-bg-content {
+    margin-top: 35px;
+}
+.leadership-bg-content h3 {
+    font-size: 2rem;
+    line-height: 30px;
+    margin-bottom: 10px;
+}
+.leadership-bg-content h6 {
+    width: 100%;
+}
+.heritage-box-desktop{display:none;}
+.heritage-box-mobile{display:block;}
+.heritage-value-desktop{display:none;}
+.heritage-value-mobile{display:block;}
+/*HERITAGE & VALUE PAGE END*/
+
+/*FOOTWEAR PAGE START*/
+.footwear-banner {
+    width: 100%;
+    height:100vh;
+}
+.footwear-content {
+    padding-top: 125px;
+}
+.footwear-content h3 {font-size: 3rem;line-height:50px;}
+.footwear-contents h3 {padding-top:10px;}
+.footwear-container {
+    margin:0;
+	height: 100vh;
+    padding:10px 0;
+	background-image: url("../../img/mb-footwear.webp");
+}
+ul.breadcrumb {margin-top: 25px;}
+ul.breadcrumb li {
+  display: inline;
+  font-size: 16px;
+}
+.featured-img {
+    text-align: right;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    transform: translateX(0%);
+    transition: transform 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+	
+}
+.external-links:hover .featured-img {
+    transform: translateX(100%);
+}
+.featured-img img {
+    height: 100%;
+    opacity: 1;
+    -webkit-transition: all 0.6s ease;
+    -moz-transition: all 0.6s ease;
+    transition: all 0.6s ease;
+}
+.text-overlap {
+    height: 414px;
+    display: flex;
+}
+.num {
+    font-size:1.50rem;
+    color: #fff;
+	left: 5%;
+}
+.title-section {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+}
+.title-section h4 {
+    color: #fff;
+}
+.title-section h6 {
+    color: #fff;
+}
+.learn-more-banner {
+    width: 100%;
+    height: 414px;
+    margin-bottom: 0px;
+}
+.learn-more-content {
+    padding-top: 30px;
+}
+/*FOOTWEAR PAGE END*/
+
+/*APPAREL & ACCESSORIES PAGE START*/
+.apparel-banner {
+    width: 100%;
+    height:100vh;
+}
+.apparel-content {
+    padding-top: 125px;
+}
+.apparel-content h3 {font-size: 3rem;line-height:50px;}
+.apparel-container {
+    margin:0;
+	height: 100vh;
+    padding:10px 0;
+	background-image: url("../../img/mb-ap-ac.webp");
+}
+.apparel-contents h3 {
+    font-size: 2.50rem;
+	line-height:40px;
+	padding-top:10px;
+}
+.apparel-learn-more-banner {
+    width: 100%;
+    height: 414px;
+    margin-bottom: 0px;
+}
+.apparel-learn-more-content {
+    padding-top: 30px;
+}
+/*APPAREL & ACCESSORIES PAGE END*/
+
+/*MATERIALS PAGE START*/
+.materials-banner {
+    width: 100%;
+    height:100vh;
+}
+.materials-content {
+    padding-top: 125px;
+}
+.materials-content h3 {font-size: 3rem;line-height:50px;}
+.materials-container {
+    margin:0;
+	height: 100vh;
+    padding:10px 0;
+	background-image: url("../../img/mb-mat.webp");
+}
+.materials-contents h3 {padding-top:10px;}
+.materials-learn-more-banner {
+    width: 100%;
+    height: 414px;
+    margin-bottom: 0px;
+}
+.materials-learn-more-content {
+    padding-top: 30px;
+}
+/*MATERIALS PAGE END*/
+
+/*SUPPLY CHAIN SOLUTION PAGE START*/
+.supply-banner {
+    width: 100%;
+    height:100vh;
+}
+.supply-content h3 {line-height:50px; font-size: 3rem;}
+.supply-contents h3 {padding-top:10px; line-height: 55px; font-size: 3rem;}
+.supply-content {
+    padding-top: 125px;
+}
+.supply-container {
+    margin:0;
+	height: 100vh;
+    padding:10px 0;
+	background-image: url("../../img/mb-scs.webp");
+}
+.supply-learn-more-banner {
+    width: 100%;
+    height: 414px;
+    margin-bottom: 0px;
+}
+.supply-learn-more-content {
+    padding-top: 30px;
+}
+.title-section h4 {
+    color: #fff;
+    font-size: 1.50rem;
+}
+.title-section {
+    left: 58%;
+}
+/*SUPPLY CHAIN SOLUTION PAGE END*/
+}
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+	
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+	
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (max-width: 992px) {
+
+.about-container {height:100vh;}
+.about-content {padding: 80px 0 0 0;}
+.about-hwaseung-video { padding-top:20px;padding-bottom:25px;}
+.business-ventures-item .title {font-size: 1.75rem;line-height: 30px;width: 200%;}
+.overlay {width: 200%;}
+.video_resolution {width:100%;height:250px;}
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+
+.leadership-kylee-content2 {
+	padding-top:50px;
+}
+.leadership-kylee-content2 p {
+    font-size: 13px;
+    margin-top: 0px;
+}
+.num {
+	left: 5%;
+}
+.text-overlap {
+  height: 250px;
+  display: flex;
+}
+.title-section {left: 25%;}	
+.heritage-value-contents {
+  padding-top:75px;
+}
+.heritage-value-contents h3 { font-size:3rem;}
+.heritage-value-img {padding-top:180px;}
+.business-content h3 {font-size: 2.50rem;}
+.business-ventures-item .title {font-size:1.50rem;}
+.investor-box {height:275px;}
+}
+
+@media only screen and (min-width: 1920px) {
+/*HOME PAGE START*/
+.container {max-width: 1600px;}	
+.menu-bg-dark {
+    font-size: 18px;
+}
+.dropdown-item {
+
+    font-size: 18px;
+}
+.footer-links ul li {
+    font-size: 18px;
+}
+.footer-sub-links ul li {
+	font-size: 18px;
+}
+.carousel-caption {/*right: 77%; bottom:25rem;*/}
+.banner-container p { left: 28%; font-size: 22px; }
+.banner-container h3 {font-size:7rem; margin-bottom:5px; line-height:120px;}
+.external-links:hover .featured-img {
+    transform: translateX(0%);
+}
+.about-container {
+	width: 100%;
+    height:100vh;
+}
+.about-content h3 {font-size: 5rem;}
+.about-content {
+    padding: 250px 0;
+}
+.about-hwaseung-video {
+  padding-top: 250px;
+}
+.about-content p {
+    line-height:30px;
+    font-size: 20px;
+}
+.about-video-title {line-height: 65px; font-size: 5rem;}
+.more_btn {font-size:20px;}
+.more_btn2 {font-size:20px;}
+.business-container {
+	width: 100%;
+    height: 100vh;
+	
+}
+.business-content h3 {font-size:3.5rem; line-height: 60px; padding-top:0px;}
+.business-content p {font-size: 20px; margin-top: 10px;}
+.business-ventures-item .title {font-size:2.25rem; line-height:40px;}
+.investor-container {
+	width: 100%;
+    height:100vh;
+}
+.investor-content {padding-top:60px;}
+.investor-content h3 {font-size: 5rem;}
+.investor-content p {font-size: 20px; margin-top: 10px;line-height: 30px;}
+.investor-box-content { margin-top: 0px; padding-top:0px; }
+.investor-box {width: 250px; height: 300px;}
+.investor-button {margin-top:60px;}
+.investor-box h5 {height:75px;}
+.investor-box p {height:75px;}
+.sustain-container {
+	width: 100%;
+    height:100vh;
+}
+.sustain-content h3 {font-size: 5rem;}
+.sustain-content p {font-size: 20px; margin-top: 10px;line-height: 30px;}
+.career-containers {
+	width: 100%;
+    height: 100vh;
+}
+.career-image {
+	width: 100%;
+    height: 100vh;
+}
+.career-contents h3 {font-size: 5rem;}
+.career-contents p {font-size: 20px; margin-top: 10px;}
+/*HOME PAGE END*/
+/*HERITAGE & VALUES PAGE START*/
+.heritage-value-banner {
+	width: 100%;
+    height:100vh;
+}
+.heritage-value-contents {padding:150px 0;}
+.heritage-value-img {padding-top:180px;}
+.heritage-value-content {padding-top: 250px;}
+.heritage-value-content .label {font-size: 18px; margin-bottom:10px;}
+.heritage-value-content h3 {font-size: 5rem; line-height:75px;}
+.vertical-lines h6 {font-size: 20px;line-height:30px;}
+.heritage-value-contents h3 {font-size: 4rem;line-height: 65px;}
+.heritage-value-contents p {font-size: 18px;}
+.heritage-text h4 {font-size: 3rem;}
+.heritage-text p {font-size: 20px;}
+.heritage-section h3{ font-size:4rem;}
+.leadership-bg-content h3 {font-size: 5rem; line-height:75px;}
+.leadership-bg-content h6 {font-size:20px;}
+.about-hwaseung-enterprise {width: 100%; height:100vh;}
+.about-hs-group {width: 100%; height:100vh;}
+.mission-container {width: 100%; height:100vh;}
+.mission-content {padding:200px 0 0 0;}
+/*HERITAGE & VALUES PAGE END*/
+/*LEADERSHIP & MANAGEMENT PAGE START*/
+.leadership-management-banner {
+	width: 100%;
+    height:100vh;
+}
+.leadership-management-content {padding-top: 250px;}
+.leadership-management-content .label {font-size: 18px; margin-bottom: 10px;}
+.leadership-kylee-content {padding: 420px 10px;}
+.leadership-management-content h3 {font-size: 5rem; line-height:75px; }
+.leadership-kylee-banner {
+	width: 100%;
+    height:100vh;
+}
+.leadership-kylee-content2 {
+    padding: 150px 150px;
+	width:55%;
+}
+.leadership-kylee-content2 p {font-size: 20px;}
+.leadership-management-container h3 {font-size: 4rem;}
+.leadership-management-text h4 {font-size:3rem;}
+.leadership-management-text h6 {font-size:2rem;}
+.leadership-management-text p {font-size: 18px;}
+/*LEADERSHIP & MANAGEMENT PAGE END*/
+/*BUSINESS STRATEGY PAGE START*/
+.business-strategy-banner {
+	width: 100%;
+    height:100vh;
+}
+.business-strategy-content .label {
+    margin-bottom: 10px;
+    width: 200px;
+    font-size: 18px;
+}
+.business-strategy-content h3 {font-size: 5rem; line-height:75px;}
+.vertical-line h6 {font-size: 20px;line-height:30px;}
+.business-strategy-contents h3 {font-size: 4rem; }
+.business-strategy-contents h6 {font-size: 20px;}
+.business-strategy-contents p {font-size: 18px;}
+.business-strategy-text h4 {font-size: 4rem; }
+/*BUSINESS STRATEGY PAGE END*/
+/*BUSINESS VERTICALS PAGE START*/
+.business-verticals-banner {
+	width: 100%;
+    height:100vh;
+}
+.business-verticals-content .label {
+	margin-bottom: 10px;
+    width: 200px;
+    font-size: 18px;
+}
+.label {
+	margin-bottom: 10px;
+    width: 80px;
+    font-size: 18px;
+}
+.footwear-bg {
+	width: 100%;
+    height: 100vh;
+}
+.apparel-bg {
+	width: 100%;
+    height: 100vh;
+}
+.materials-bg {
+	width: 100%;
+    height: 100vh;
+}
+.supply-bg {
+	width: 100%;
+    height: 100vh;
+}
+.business-verticals-section {
+	width: 100%;
+    height: 100vh;
+	padding: 300px 35px;
+}
+.business-verticals-content h3 {font-size: 5rem; line-height:75px;}
+.business-verticals-section .title {font-size: 4.50rem; padding-bottom: 30px; line-height:75px;}
+.business-verticals-section p {font-size: 20px;}
+/*BUSINESS VERTICALS PAGE END*/
+/*INVESTOR RELATIONS PAGE START*/
+.investor-relations-banner {
+	width: 100%;
+    height:100vh;
+}
+.investor-relations-content h3 {font-size: 5rem; line-height:90px;}
+.investor-relations-image .title {font-size: 5rem;}
+.investor-relations-text h5 {font-size:4rem;line-height:75px;}
+.investor-relations-text p {font-size: 20px;}
+/*INVESTOR RELATIONS PAGE END*/
+/*SUSTAINABILITY PAGE START*/
+.sustainability-banner {
+	width: 100%;
+    height:100vh;
+}
+.sustainability-content h3 {font-size: 5rem;line-height:90px;}
+.sustainability-container h3 {font-size: 5rem;}
+.sustainability-container p {font-size: 20px;}
+.goal-box1 {height: 275px;}
+.goal-box1 .text {top: 150px; font-size: 25px;}
+/*SUSTAINABILITY PAGE END*/
+/*NEWSROOM PAGE START*/
+.newsroom-banner {
+	width: 100%;
+    height:100vh;
+}
+.newsroom-content h3 {font-size: 5rem;line-height:90px;}
+.vertical-liness h6 {font-size: 20px;line-height:30px;}
+.news-container h3 {font-size:3rem;}
+.news-text p {font-size: 20px;}
+.blog-box h5 {font-size: 2rem;}
+.blog-box p {font-size: 18px;}
+/*NEWSROOM PAGE END*/
+/*CAREERS PAGE START*/
+.career-banner {
+	width: 100%;
+    height:100vh;
+}
+.career-content h3 {font-size: 5rem;line-height:90px;}
+.career-container h4 {font-size: 5rem;}
+.career-container p {font-size: 20px;}
+.opening-list h6 {font-size:1.50rem;}
+.opening-list ul li {font-size:20px;}
+.opening-item {font-size:24px;}
+.life-text h3 {font-size: 4rem;}
+.life-text p {font-size: 17px;}
+.benefit-contents h5 {font-size:3rem;}
+.benefit-contents p {font-size: 18px;}
+.benefit-content h4 {font-size: 4rem;}
+.moments-container h4 {font-size: 4rem;}
+.life-container {height:auto;}
+.life-image {width: 100%; height:1080px;}
+.benefit-content {margin-top: -15%;}
+#columns {max-width: 100% !important;}
+/*CAREERS PAGE END*/
+/*CONTACT PAGE START*/
+.contact-banner {
+	width: 100%;
+    height:100vh;
+}
+.contact-content h3 {font-size: 5rem;line-height:90px;}
+.contact-text h3 {font-size: 5rem;line-height:100px;}
+.contact-text h5 {font-size:3rem;}
+.address-box {font-size: 20px;}
+.contact-container {width: 100%; height:1080px;}
+.contact-image {width: 100%; height:1080px;}
+/*CONTACT PAGE END*/
+/*FOOTWEAR PAGE START*/
+.footwear-banner {
+	width: 100%;
+    height:100vh;
+}
+.footwear-content {padding-top: 250px;}
+.footwear-content .label {margin-bottom: 10px; width:200px; font-size: 18px;}
+.footwear-container {height:100vh;}
+.footwear-content h3 {font-size: 5rem; line-height:75px;}
+ul.breadcrumb li {
+    font-size: 22px;
+}
+.footwear-contents h3 {font-size: 5rem;}
+.footwear-contents p {font-size: 20px;}
+.num {font-size: 2.50rem;}
+.title-section h4 {font-size:2.25rem;}
+.title-section h6 {font-size: 18px;}
+.learn-more-content h3 {font-size: 5rem;}
+.text-overlap {
+  height: 500px;
+  display: flex;
+}
+.title-section {
+  position: absolute;
+  top: 50%;
+  left: 22%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+}
+/*FOOTWEAR PAGE END*/
+/*APPAREL & ACCESSORIES PAGE START*/
+.apparel-banner {
+	width: 100%;
+    height:100vh;
+}
+.apparel-container {height:100vh;}
+.apparel-content {padding-top: 250px;}
+.apparel-content .label {margin-bottom: 10px; width: 200px; font-size: 18px;}
+.apparel-content h3 {font-size: 5rem; line-height:75px;}
+.apparel-contents h3 {font-size: 5rem;}
+.apparel-contents p {font-size: 20px;}
+.apparel-learn-more-content h3 {font-size: 5rem;}
+/*APPAREL & ACCESSORIES PAGE END*/
+/*MATERIALS PAGE START*/
+.materials-banner {
+	width: 100%;
+    height:100vh;
+}
+.materials-container {height:100vh;}
+.materials-content {padding-top: 250px;}
+.materials-content .label {margin-bottom: 10px; width: 200px; font-size: 18px;}
+.materials-content h3 {font-size: 5rem; line-height:75px;}
+.materials-contents h3 {font-size: 5rem;}
+.materials-contents p {font-size: 20px;}
+.materials-learn-more-content h3 {font-size: 5rem;}
+/*MATERIALS PAGE END*/
+/*SUPPLY CHAIN SOLUTION PAGE START*/
+.supply-banner {
+	width: 100%;
+    height:100vh;
+}
+.supply-container {height:100vh;}
+.supply-content {padding-top: 250px;}
+.supply-content .label {margin-bottom: 10px; width: 200px; font-size: 18px;}
+.supply-content h3 {font-size: 5rem; line-height:75px;}
+.supply-contents h3 {font-size: 5rem;}
+.supply-contents p  {font-size: 20px;}
+.supply-learn-more-content h3 {font-size: 5rem;}
+/*SUPPLY CHAIN SOLUTION  PAGE END*/
+}
+/*MEDIA QUERY END*/

@@ -1,0 +1,66 @@
+.main-header {background-color: rgba(0,0,0,.5); position:fixed; width:100%; float:left; font-family: Roboto-BoldItalic;
+font-size: 16px; z-index: 100; top: 0px;}
+            .mmenu-title {position:absolute; padding:0 0 0 20px; top:15px; text-align:left; color:#fff; font-family: Roboto-BoldItalic; font-size:14px; text-transform:uppercase;z-index:10;}
+			.mmenu-title ul {margin:0; padding:0;}
+			.mmenu-title ul li {display:inline-block; padding: 0 10px 0 0px; border:none;}
+			.mmenu-title ul li .active {color:#fff;}
+			.mmenu-title ul li a {text-decoration:none; color:#757575;}
+			.mmenu-title ul li a:hover {text-decoration:none; color:#fff;}
+			.mmenu-sub {color:#757575 !important; border-top:none !important; font-family: Roboto-LightItalic !important;font-weight: 700 !important;}
+            .main-navigation .menu a.active, .main-navigation .menu a:hover {background: #f57046; }
+            .main-navigation ul li {display: inline-block; position: relative; }
+            .main-navigation ul li a {font-family: Roboto-BoldItalic; padding: 25px 10px; display: block; text-transform: capitalize; color: #333; font-size: 16px; font-weight: 500; position: relative; z-index: 1; line-height: 1; }
+            .main-navigation ul ul li a{color: #333; }
+            /* Main Menu CSS End*/
+            /* Submenu / Dropdown Menu CSS */
+            .main-navigation ul li ul {position: absolute; width: 250px; left: 0; top: 65px; z-index: 2; -webkit-transition: .3s; transition: .3s; visibility: hidden; opacity: 0; background-color: #1e1916; margin: 0; padding: 0; list-style: none; }
+            .main-navigation ul li:hover > ul {opacity: 1; visibility: visible; }
+            .main-navigation ul li ul li a {padding: 14px 20px; line-height: 26px; }
+            .main-navigation ul li ul li {display: block; text-align: left; }
+            .main-navigation ul li ul ul {left: 250px; top: 0; }
+            .main-navigation ul li ul li {border-bottom: 1px solid #e5e5e52b; }
+            .main-navigation ul li ul li:last-child {border-bottom: 0; }
+            /* Submenu / Dropdown Menu CSS End */
+            /* Mobile Menu CSS Start*/
+            .mobile-menu-trigger {cursor: pointer; margin-left: 30px; display: none; background: transparent; border: none; }
+            .mobile-menu-trigger span {height: 2px; display: block; margin-right: 10px; width: 22px; margin-bottom: 5px; background-color: #fff;}
+            .mobile-menu-trigger span:last-child {margin-bottom: 0; }
+            .mobile-menu-container {position: fixed; top: 0; bottom: 0; left: 0; width: 100%; background-color: rgba(0,0,0,.9); z-index: 999999; opacity: 0; visibility: hidden; overflow-y: scroll; -ms-transform: translateX(100%); -webkit-transform: translateX(100%); transform: translateX(100%); overflow-x: hidden; -webkit-transition: .4s; transition: .4s; }
+            .mobile-menu-container li {opacity: 0; visibility: hidden; -ms-transform: translateX(1000px); -webkit-transform: translateX(1000px); transform: translateX(100px); -webkit-transition: 1s; transition: 1s; border-top: 1px solid rgb(255 255 255 / 8%);}
+            .mobile-menu-container li:nth-last-child(1) {border-bottom: none; }
+            .mobile-menu-container li > a .slicknav_arrow:after {content: "\f107"; position: absolute; font-family: 'FontAwesome'; top: -5px; bottom: 0; color: white; z-index: 999; margin: 0 auto; text-align: center; right: 0; left: 0; font-size:22px; line-height: 50px; }
+            .mobile-menu-container.menu-open li.slicknav_open > a .slicknav_arrow:after{content: "\f106"; top:-5px; color: #b1b2ad;}
+            .mobile-menu-container.menu-open {opacity: 1; visibility: visible; -ms-transform: translateX(0%); -webkit-transform: translateX(0%); transform: translateX(0%); } 
+            .mobile-menu-container.menu-open li {opacity: 1; visibility: visible; -ms-transform: translateX(0); -webkit-transform: translateX(0); transform: translateX(0); }
+            .mobile-menu-close {position: absolute; right: 15px; top: 20px; width: 30px; height: 30px; cursor: pointer; z-index: 1; }
+            .mobile-menu-close::before {left: 15px; -ms-transform: rotate(45deg); -webkit-transform: rotate(45deg); transform: rotate(45deg); }
+            .mobile-menu-close::after {right: 13px; -ms-transform: rotate(-45deg); -webkit-transform: rotate(-45deg); transform: rotate(-45deg); }
+            .mobile-menu-close::before, .mobile-menu-close::after {position: absolute; height:20px; width: 2px; background: #ffffff; content: ''; top: 0; }
+            #mobile-menu-wrap {display: block; height: 100%; width: 100%; position: absolute; right: 0; padding: 50px 0px 20px 20px; }
+            #mobile-menu-wrap div {background-color: transparent; }
+            #mobile-menu-wrap .slicknav_item i{display: none;}
+            /*Sidebar Start*/
+            .slicknav_nav, .slicknav_nav.slicknav_hidden {display: block !important; text-align: left; }
+            .slicknav_btn {display: none !important; }
+            .slicknav_menu {padding-left: 0; }
+            .slicknav_nav li > a {display: block; font-weight: 400; font-family: Roboto-BoldItalic; font-size:20px;} 
+            .slicknav_item.slicknav_row a {border-bottom: 0; }
+            .slicknav_nav .slicknav_row, .slicknav_nav a {padding: 10px 0px; margin: 0; }
+            .slicknav_nav .slicknav_arrow {font-size: 0; height: 100%; width: 50px; display: inline-block; position: absolute; top: 0; }
+            .slicknav_nav ul {margin: 0 0 0 0px; }
+            .slicknav_nav .menu-item-has-children ul {margin-bottom: 00px; }
+            .slicknav_nav .menu-item-has-children ul li {padding-left:0px; }
+            .sub-menu .menu-item-has-children a i {position: absolute; right: 20px; top: 20px; }
+            .slicknav_nav a:hover, .slicknav_nav .slicknav_row:hover {background-color: transparent; }
+            .slicknav_nav .slicknav_row:hover, .slicknav_nav a:hover {border-radius: 0; color: #ccc;}
+            .slicknav_item.slicknav_row {display: inline-block; width: 100%; position: relative; }
+            .slicknav_arrow {-webkit-transition: .3s; transition: .3s; right: 0; top: 17px; position: absolute; }
+            .slicknav_nav a, .slicknav_row a {color: #ffffff; font-size:20px; display: inline-block; }
+            /*Sidebar Start*/            
+            /* Mobile Menu CSS End*/
+
+            @media only screen and (max-width: 991px){
+                /*Menu*/
+                .header-navigation-area {display: none; }
+                .mobile-menu-trigger {display: block; }
+            } 
