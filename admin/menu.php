@@ -20,7 +20,7 @@
 						<ul class="submenu">
 						<li><a href="index.php">Dashboard</a>
 						</li>
-						<li><a href="banner.php">supplier</a>
+						<li><a href="SupplierEntry.php">supplier</a>
 						</li>
 						<li><a href="h_a.php">Unit</a>
 						</li>

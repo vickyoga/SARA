@@ -24,7 +24,7 @@ include("include/config.php");
     <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
 
     <!-- Include DataTables JS -->
-    <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+   
     
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
@@ -59,7 +59,7 @@ include("include/config.php");
                             <nav aria-label="breadcrumb" role="navigation">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="index.php">Home</a></li>
-                                    <li class="breadcrumb-item active" aria-current="page"><a href="banner.php">Supplier</a></li>
+                                    <li class="breadcrumb-item active" aria-current="page"><a href="SupplierEntry.php">Supplier</a></li>
                                 </ol>
                             </nav>
                         </div>
@@ -108,7 +108,7 @@ include("include/config.php");
                             <label>Address</label>
                             <textarea class="form-control" id="address" name="address" rows="1" <?php echo isset($_GET['del_id']) ? 'disabled' : ''; ?>><?php echo isset($address) ? $address : ''; ?></textarea>
                         </div>
-                        <a class="badge badge-primary" href="banner.php">Reset</a>
+                        <a class="badge badge-primary" href="SupplierEntry.php">Reset</a>
                         <button id="save" type="submit" name="<?php echo isset($_GET['edit_id']) ? 'update' : (isset($_GET['del_id']) ? 'delete' : 'supplier_submit'); ?>" value="submit" class="badge badge-success">Submit</button>
                     </form>
                 </div>
@@ -120,11 +120,11 @@ include("include/config.php");
                     $bank = $_POST['bank'];
                     $address = $_POST['address'];
 
-                    $insert_qry = "INSERT INTO supplier (name, mobile, gst, bank, address) VALUES ('$name', '$mobile', '$gst', '$bank', '$address')";
+                    $insert_qry = "INSERT INTO supplier (name, mobile, gst, bank, address,isactive) VALUES ('$name', '$mobile', '$gst', '$bank', '$address','1')";
                     $res_insert_qry = mysqli_query($dbcon1, $insert_qry);
 
                     if($res_insert_qry){
-                        echo "<script>alert('Supplier Added successfully'); window.location.href='banner.php';</script>";
+                        echo "<script>alert('Supplier Added successfully'); window.location.href='SupplierEntry.php';</script>";
                     } else {
                         echo "Check Insert Query";
                     }
@@ -142,7 +142,7 @@ include("include/config.php");
                     $res_update_qry = mysqli_query($dbcon1, $update_qry);
 
                     if($res_update_qry){
-                        echo "<script>alert('Update successful'); window.location.href='banner.php';</script>";
+                        echo "<script>alert('Supplier Detail Updated successful'); window.location.href='SupplierEntry.php';</script>";
                     } else {
                         echo "Check Update Query";
                     }
@@ -155,11 +155,53 @@ include("include/config.php");
                     $res_delete_qry = mysqli_query($dbcon1, $delete_qry);
 
                     if($res_delete_qry){
-                        echo "<script>alert('Delete successful'); window.location.href='banner.php';</script>";
+                        echo "<script>alert('Supplier Permanently Delete successful'); window.location.href='SupplierEntry.php';</script>";
                     } else {
-                        echo "Check Delete Query";
+                        echo "Supplier Query check";
                     }
                 }
+
+                if(isset($_GET['upd'])){
+                   
+                 $id_fp=$_REQUEST['upd']; 
+                    if(!empty($id_fp))
+                    {
+                      $query = "SELECT isactive FROM `supplier` WHERE  `supplier_id`=".$id_fp."";
+                      $execute_qry = mysqli_query($dbcon1,$query)or die("Sustainability Box Icon Retriew Error!");          
+                      while($team = mysqli_fetch_array($execute_qry)) {
+                      $active_record = $team['isactive'];
+                      if ($active_record =='0')
+                      {
+                        $insq1 = mysqli_query($dbcon1,"UPDATE `supplier` SET `isactive`='1' WHERE `supplier_id`=".$id_fp."") or die(mysqli_Error($dbcon1));
+                        if($insq1)
+                        {
+                          echo('<script type="text/javascript">alert(" Activated Sucessfully"); window.location="SupplierEntry.php";</script>');
+                         // $post_msg = "client Delete successfully";
+                        }
+                        else
+                        {
+                          echo('<script type="text/javascript">alert(" Activation Problems"); window.location="SupplierEntry.php";</script>');
+                          //$err_msg = "client Delete Problems";
+                        }
+                        }
+                      else
+                      {
+                          $insq1 = mysqli_query($dbcon1,"UPDATE supplier SET isactive ='0'  WHERE `supplier_id`=".$id_fp."") or die(mysqli_Error($dbcon1));
+                        if($insq1)
+                        {
+                          echo('<script type="text/javascript">alert(" UnActivated Sucessfully"); window.location="SupplierEntry.php";</script>');
+                         // $post_msg = "client Delete successfully";
+                        }
+                        else
+                        {
+                          echo('<script type="text/javascript">alert("UnActivated Problems"); window.location="SupplierEntry.php";</script>');
+                          //$err_msg = "client Delete Problems";
+                        }
+                      }
+                      }
+                    }
+                  }  
+                     
                 ?>
                 <!-- Backend Form End -->
 
@@ -195,6 +237,7 @@ include("include/config.php");
                                 $gst = $team['gst'];
                                 $bank = $team['bank'];
                                 $address = $team['address'];
+                                $active_record = $team['isactive'];
                             ?>
                             <tr>
                                 <th scope="row"><?php echo $i; ?></th>
@@ -204,8 +247,9 @@ include("include/config.php");
                                 <td><?php echo $bank; ?></td>
                                 <td><?php echo $address; ?></td>
                                 <td>
-                                    <a class="badge badge-warning" href="banner.php?edit_id=<?php echo $supplier_id; ?>">Edit</a>
-                                    <a class="badge badge-danger" href="banner.php?del_id=<?php echo $supplier_id; ?>">Delete</a>
+                                <a href='?upd=<?php echo $supplier_id; ?>'><?php if($active_record == 0) { ?><span class="badge badge-danger">InActive</span><?php } else{ ?><span class="badge badge-success">Active</span><?php } ?></a>&nbsp; 
+                                    <a class="badge badge-warning" href="SupplierEntry.php?edit_id=<?php echo $supplier_id; ?>">Edit</a>
+                                    <a class="badge badge-danger" href="SupplierEntry.php?del_id=<?php echo $supplier_id; ?>">Delete</a>
                                 </td>
                             </tr>
                             <?php } ?>
@@ -223,6 +267,9 @@ include("include/config.php");
    
     <script src="vendors/scripts/process.js"></script>
     <script src="vendors/scripts/layout-settings.js"></script>
+    <script src="vendors/scripts/core.js"></script>
+	<script src="vendors/scripts/script.min.js"></script>
+    <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
     <script>
 		  $(document).ready(function() {
 		$(document).on('click', '#save', function(event) {
