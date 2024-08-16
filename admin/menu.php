@@ -22,13 +22,13 @@
 						</li>
 						<li><a href="SupplierEntry.php">supplier</a>
 						</li>
-						<li><a href="h_a.php">Unit</a>
+						<li><a href="UnitEntry.php">Unit</a>
 						</li>
 						<!-- <li><a href="other_content.php">Other Contents</a>
 						</li> -->
 						<!-- <li><a href="hu_bu.php">Business Ventures</a>
 						</li> -->
-						<li><a href="hu_ir.php">Category</a>
+						<li><a href="CategoryEntry.php">Category</a>
 						</li>
 						<li><a href="hu_su.php">product</a>
 						</li>
