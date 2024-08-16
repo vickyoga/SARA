@@ -2,385 +2,12 @@
 Error_reporting(0);
 include("include/config.php");
 ?>
-<?php
-
-if(!empty($_REQUEST['id_fp']))
-    {
-     $id_fp=$_REQUEST['id_fp'];
-     $post_msg = "";
-     $succ_msg = "";
-     $err_msg = "";
-     $url_Error="";
-     $msg="";	
-
-    if(isset($_POST['e_ab_b_title']))
-    { 
-      // $existing_image=$_POST['existing_image'];
-      // if($_FILES["e_uploadfile"]["size"]>0)
-	    // {
-        
-		  //   if(!empty($existing_image))
-		  //   {
-			//     unlink($existing_image);
-		  //   }
-      //       $uploadDirectory = "image/ab_hv_banner/";
-      //       $allowedExts = array("image/jpeg", "image/jpg", "image/png","image/webp");
-      //       $file_type = $_FILES['e_uploadfile']['type']; 
-        
-      //       $randString = md5(time()); 
-      //       $fileName = $_FILES["e_uploadfile"]["name"]; 
-      //       $splitName = explode(".", $fileName); 
-      //       $fileExt = end($splitName); 
-      //       $newFileName  = strtolower($randString.'.'.$fileExt);
-      //       if (($_FILES["e_uploadfile"]["size"] < 90000000000000000000000000000000000) && in_array($file_type, $allowedExts))
-      //       {
-      //        	if ($_FILES["e_uploadfile"]["Error"] > 0)
-      //        	{
-      //       	 $err_msg = $_FILES["e_uploadfile"]["Error"] . "<br />";
-      //        	}
-      //        else
-      //         {
-      //           if(file_exists($uploadDirectory . $newFileName))
-      //           {
-      //             $err_msg = $newFileName . " already exists. ";
-      //           }
-      //           else
-      //           {
-      //             move_uploaded_file($_FILES["e_uploadfile"]["tmp_name"],	$uploadDirectory.$newFileName);
-      //             $e_ab_b_img_path = $uploadDirectory.$newFileName;
-      //           }
-      //         }
-      //       }
-      //       else
-      //       {
-      //         $err_msg = "Your image file is not supportable format or size is too large, kindly follow the insructions properly! ";
-      //       }
-      // }
-      // else
-      // {
-      //   $e_ab_b_img_path = $existing_image;
-      // }   
-            
-                $e_ab_b_title = $_POST['e_ab_b_title'];  
-                $e_ab_b_content =$_POST['e_ab_b_content'];
-        
-              //   $data = getimagesize($e_ab_b_img_path);
-              //   $width = $data[0];
-              //   $height = $data[1];
-              //  if($height != "1080" && $width !="1920"){
-              //  $err_msg = 'Your Given Height('.$height.'),Width('.$width.') Is Not Matching';
-              //   }
-
-               if(!empty($e_ab_b_title) && !empty($e_ab_b_content))
-                {
-                    $insq1 = mysqli_query($dbcon1,"UPDATE `ab_banner` SET `ab_b_title`='".$e_ab_b_title."',`ab_b_content`='".$e_ab_b_content."' WHERE `id_ab_banner`=".$id_fp."") or die(mysqli_Error($dbcon1));
-                    if($insq1)
-                    {
-                    $post_msg = "Your Banner Edited successfully";
-                    }
-                    else
-                    {
-                    $err_msg = "Your Banner Editing Problems";
-                    }
-                }
-                else
-                {
-                $err_msg = "You must be provide a valid Banner Title and Banner Content and Banner Image";
-                }	
-
-          
-    }?>
-	<!DOCTYPE html>
-    <html>
-	<head>
-	<!-- Basic Page Info -->
-	<meta charset="utf-8">
-	<title>admin</title>
-
-	<!-- Site favicon -->
-	<link rel="apple-touch-icon" sizes="180x180" href="vendors/images/apple-touch-icon.png">
-	<link rel="icon" type="image/png" sizes="32x32" href="vendors/images/favicon.png">
-	<link rel="icon" type="image/png" sizes="16x16" href="vendors/images/favicon-small.png">
-
-	<!-- Mobile Specific Metas -->
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-
-	<!-- Google Font -->
-	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-	<!-- CSS -->
-	<link rel="stylesheet" type="text/css" href="vendors/styles/core.css">
-	<link rel="stylesheet" type="text/css" href="vendors/styles/icon-font.min.css">
-	<link rel="stylesheet" type="text/css" href="vendors/styles/style.css">
-
-
-	<!-- Global site tag (gtag.js) - Google Analytics -->
-	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-119386393-1"></script>
-	<script>
-		window.dataLayer = window.dataLayer || [];
-		function gtag(){dataLayer.push(arguments);}
-		gtag('js', new Date());
-
-		gtag('config', 'UA-119386393-1');
-	</script>
-	</head>
-
-<body>
- <?php include 'header.php';?>
-
-<?php include 'menu.php';?>
-
-	<div class="main-container">
-		<div class="pd-ltr-20 xs-pd-20-10">
-			<div class="min-height-200px">
-				<div class="page-header">
-					<div class="row">
-
-
-					
-						<div class="col-md-6 col-sm-12">
-							<div class="title">
-								<h4> Edit Heritage Banner</h4>
-							</div>
-							<nav aria-label="breadcrumb" role="navigation">
-								<ol class="breadcrumb">
-									<li class="breadcrumb-item"><a href="index.php">Home</a></li>
-									<li class="breadcrumb-item active" aria-current="page"><a href="a_h_b.php">Heritage Banner</a></li>
-								</ol>
-							</nav>
-						</div>
-					</div>
-				</div>
-
-				<!-- Banner Start -->
-				<div class="pd-20 card-box mb-30">
-					<div class="clearfix">
-						<div class="pull-left">
-							<h4 class="text-blue h4"> Banner</h4>
-							<!--<p class="mb-30"></p>-->
-						</div>
-					</div>
-				<?php
-       				 $query ="SELECT `id_ab_banner`,`ab_b_title`, `ab_b_content`, `date_time`, `active_record` FROM `ab_banner` WHERE  id_ab_banner=".$id_fp."";
-        			$execute_qry = mysqli_query($dbcon1,$query)or die("Banner Retriew Error!");          
-       	 			while($team = mysqli_fetch_array($execute_qry)) {
-        			$id_ab_banner = $team['id_ab_banner'];
-        			// $ab_b_img_path = $team['ab_b_img_path'];
-        			$ab_b_title = $team['ab_b_title'];
-      				$ab_b_content = $team['ab_b_content'];
-      			?>
-				<form method="post" autocomplete="off"  enctype="multipart/form-data">
-						<!-- <div class="form-group">
-							<label>Banner Image Uplaod</label>
-							<input type="file" name="e_uploadfile" class="form-control-file form-control height-auto">
-							<input type="hidden" name="existing_image" value="<!?php print $ab_b_img_path?>" />
-							<small class="form-text text-muted">
-							  Notes : Banner width:1920px and height:1080px.
-							</small>
-						</div> -->
-						<div class="form-group">
-							<label>Title</label>
-							<input type="text" name="e_ab_b_title" class="form-control" value="<?php print $ab_b_title?>">
-							<small class="form-text text-muted">
-							  Notes : Help notes
-							</small>
-						</div>
-						<div class="form-group">
-							<label>Content</label>
-							<input type="text" name="e_ab_b_content" class="form-control" value="<?php print $ab_b_content?>">
-							<small class="form-text text-muted">
-							  Notes : Help notes
-							</small>
-						</div>
-						<button type="reset" class="btn btn-primary">Reset</button>
-						<button type="submit" class="btn btn-success">Submit</button>
-					</form>
-				<?php 
-		            }
-				?> 
-
-				</div>
-				<?php
-					if(!empty($post_msg))
-					{
-						echo "<p style='color:green;font-weight:bold;'>".$post_msg."</p>";
-					}
-					
-          			else if(!empty($err_msg))
-					{
-						echo "<p style='color:red;font-weight:bold;'>".$err_msg."</p>";
-					}else if(!empty($url_Error))
-					{
-						echo "<p style='color:red;font-weight:bold;'>".$url_Error."</p>";
-					}
-				
-					?>
-					</div>
-
-
-
-	<?php
-	}
- 
-	// active status start
-     
-    else if(!empty($_REQUEST['upd'])){
-      $id_fp=$_REQUEST['upd'];
-      if(!empty($id_fp))
-      {
-        $query = "SELECT `id_ab_banner`, `ab_b_img_path`, `ab_b_title`, `ab_b_content`, `date_time`, `active_record` FROM `ab_banner` WHERE  `id_ab_banner`=".$id_fp."";
-        $execute_qry = mysqli_query($dbcon1,$query)or die("Banner Retriew Error!");          
-        while($team = mysqli_fetch_array($execute_qry)) {
-        $active_record = $team['active_record'];
-        if ($active_record == 0)
-        {
-          $insq1 = mysqli_query($dbcon1,"UPDATE `ab_banner` SET `active_record`=1 WHERE `id_ab_banner`=".$id_fp."") or die(mysqli_Error($dbcon1));
-          if($insq1)
-          {
-            echo('<script type="text/javascript">alert(" Activated Sucessfully"); window.location="a_h_b.php";</script>');
-           // $post_msg = "client Delete successfully";
-          }
-          else
-          {
-            echo('<script type="text/javascript">alert(" Activation Problems"); window.location="a_h_b.php";</script>');
-            //$err_msg = "client Delete Problems";
-          }
-          }
-        else
-        {
-            $insq1 = mysqli_query($dbcon1,"UPDATE ab_banner SET active_record = 0  WHERE `id_ab_banner`=".$id_fp."") or die(mysqli_Error($dbcon1));
-          if($insq1)
-          {
-            echo('<script type="text/javascript">alert(" UnActivated Sucessfully"); window.location="a_h_b.php";</script>');
-           // $post_msg = "client Delete successfully";
-          }
-          else
-          {
-            echo('<script type="text/javascript">alert("UnActivated Problems"); window.location="a_h_b.php";</script>');
-            //$err_msg = "client Delete Problems";
-          }
-        }
-        }
-      }
-    }  
-	   
-	// active status end
-
-
-	// Delete start
-
-    else if(!empty($_REQUEST['del'])){
-      $id_fp=$_REQUEST['del'];
-      if(!empty($id_fp))
-      {
-    
-            $insq1 = mysqli_query($dbcon1,"DELETE FROM `ab_banner` WHERE `id_ab_banner`=".$id_fp."") or die(mysqli_Error($dbcon1));
-          if($insq1)
-          {
-            echo('<script type="text/javascript">alert(" banner  Delete Sucessfully"); window.location="a_h_b.php";</script>');
-           // $post_msg = "client Delete successfully";
-          }
-          else
-          {
-            echo('<script type="text/javascript">alert(" banner  Delete Problems"); window.location="a_h_b.php";</script>');
-            //$err_msg = "client Delete Problems";
-          }
-      }
-    } 
- else{
-	   // Delete End
- ?>
-
-     <!--set img path-->
-
-<?php
-$post_msg = "";
-$succ_msg = "";
-$err_msg = "";
-$url_Error="";
-$msg="";
-
-   if(isset($_POST['ab_b_title']))
-  { 
-    // $uploadDirectory = "image/ab_hv_banner/";
-    // $allowedExts = array("image/jpeg", "image/jpg", "image/png","image/webp");
-    // $file_type = $_FILES['uploadfile']['type']; 
-
-    // $randString = md5(time()); 
-    // $fileName = $_FILES["uploadfile"]["name"]; 
-    // $splitName = explode(".", $fileName); 
-    // $fileExt = end($splitName); 
-    // $newFileName  = strtolower($randString.'.'.$fileExt);
-    // if (($_FILES["uploadfile"]["size"] < 90000000000000000000000000000000000) && in_array($file_type, $allowedExts))
-    // {
-    //     if ($_FILES["uploadfile"]["Error"] > 0)
-    //     {
-    //         $err_msg = $_FILES["uploadfile"]["Error"] . "<br />";
-    //     }
-    //     else
-    //     {
-    //         if (file_exists($uploadDirectory . $newFileName))
-    //         {
-    //             $err_msg = $newFileName . " already exists. ";
-    //         }
-    //         else
-    //         {
-    //             move_uploaded_file($_FILES["uploadfile"]["tmp_name"],	$uploadDirectory.$newFileName);
-    //             $ab_b_img_path = $uploadDirectory.$newFileName;
-    //         }
-    //     }
-    // }
-    // else
-    // {
-    //     $err_msg = "Your image file is not supportable format or size is too large, kindly follow the insructions properly! ";
-    // }
-    
-      $ab_b_title = $_POST['ab_b_title'];  
-      $ab_b_content =$_POST['ab_b_content'];
-     
-        // $data = getimagesize($ab_b_img_path);
-        // $width = $data[0];
-        // $height = $data[1];
-        // if($height != "1080" && $width !="1920"){
-        //   $err_msg = 'Your Given Height('.$height.'),Width('.$width.') Is Not Matching';
-        // }
-
-  if(!empty($ab_b_title) && !empty($ab_b_content))
-    {
-        $selq1 = mysqli_query($dbcon1,"SELECT * FROM ab_banner WHERE  active_record=1") or die(mysqli_Error($dbcon1));
-
-        if (mysqli_num_rows($selq1) > 0) 
-        {
-        $url_Error = "Sorry...  Banner Title Exist";
-        }
-        else
-        {
-            $insq1 = mysqli_query($dbcon1,"insert into ab_banner(ab_b_title,ab_b_content) values('$ab_b_title','$ab_b_content')") or die(mysqli_Error($dbcon1));
-        if($insq1)
-        {
-            $post_msg = "Your Banner Added successfully";
-        }
-        else
-        {
-            $err_msg = "Your Banner Adding Problems";
-        }
-    }
-
-            
-        }
-        else
-        {
-            $err_msg = "You must be provide a valid Banner Title and Banner Content and Banner Image";
-        }	
-    
-        
-}
-?>
-    <!DOCTYPE html>
-    <html>
-    <head>
+<!DOCTYPE html>
+<html>
+<head>
     <!-- Basic Page Info -->
     <meta charset="utf-8">
-    <title>admin</title>
+    <title>Admin</title>
 
     <!-- Site favicon -->
     <link rel="apple-touch-icon" sizes="180x180" href="vendors/images/apple-touch-icon.png">
@@ -390,231 +17,326 @@ $msg="";
     <!-- Mobile Specific Metas -->
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-    <!-- Google Font -->
+    <!-- Include jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    
+    <!-- Include DataTables CSS -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
+
+    <!-- Include DataTables JS -->
+   
+    
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
     <!-- CSS -->
     <link rel="stylesheet" type="text/css" href="vendors/styles/core.css">
+
     <link rel="stylesheet" type="text/css" href="vendors/styles/icon-font.min.css">
     <link rel="stylesheet" type="text/css" href="vendors/styles/style.css">
 
-
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-119386393-1"></script>
-<script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-
-    gtag('config', 'UA-119386393-1');
-</script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-119386393-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-119386393-1');
+    </script>
 </head>
 <body>
-<?php include 'header.php';?>
+    <?php include 'header.php'; ?>
+    <?php include 'menu.php'; ?>
 
-<?php include 'menu.php';?>
-
-<div class="main-container">
-    <div class="pd-ltr-20 xs-pd-20-10">
-        <div class="min-height-200px">
-            <div class="page-header">
-                <div class="row">
-                    <div class="col-md-6 col-sm-12">
-                        <div class="title">
-                            <h4>Heritage Banner</h4>
+    <div class="main-container">
+        <div class="pd-ltr-20 xs-pd-20-10">
+            <div class="min-height-200px">
+                <div class="page-header">
+                    <div class="row">
+                        <div class="col-md-6 col-sm-12">
+                            <div class="title">
+                                <h4>Supplier Entry Form</h4>
+                            </div>
+                            <nav aria-label="breadcrumb" role="navigation">
+                                <ol class="breadcrumb">
+                                    <li class="breadcrumb-item"><a href="index.php">Home</a></li>
+                                    <li class="breadcrumb-item active" aria-current="page"><a href="SupplierEntry.php">Supplier</a></li>
+                                </ol>
+                            </nav>
                         </div>
-                        <nav aria-label="breadcrumb" role="navigation">
-                            <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="index.php">Home</a></li>
-                                <li class="breadcrumb-item active" aria-current="page"><a href="a_h_b.php">Heritage Banner</a></li>
-                            </ol>
-                        </nav>
                     </div>
                 </div>
-            </div>
-            
-            <!-- Banner Start -->
-            <div class="pd-20 card-box mb-30">
-                <div class="clearfix">
-                    <div class="pull-left">
-                        <h4 class="text-blue h4">Banner</h4>
-                        <!--<p class="mb-30"></p>-->
+                <?php
+                if(isset($_GET['edit_id']) || isset($_GET['del_id'])){
+                    $id = isset($_GET['edit_id']) ? $_GET['edit_id'] : $_GET['del_id'];
+                    $sel_user = "SELECT * FROM supplier WHERE supplier_id = $id";
+                    $res_sel_user = mysqli_query($dbcon1, $sel_user);
+                    while($row = mysqli_fetch_assoc($res_sel_user)){
+                        $name = $row['name'];
+                        $mobile = $row['mobile'];
+                        $gst = $row['gst'];
+                        $bank = $row['bank'];
+                        $address = $row['address'];
+                    }
+                }
+                ?>
+                <!-- Banner Start -->
+                <div class="pd-20 card-box mb-30">
+                    <div class="clearfix">
+                        <div class="pull-left">
+                            <h4 class="text-blue h4">Supplier Details</h4>
+                        </div>
                     </div>
+                    <form id="supplierForm" method="post" autocomplete="off" enctype="multipart/form-data">
+
+                        <div class="form-group">
+                            <label>Name</label>
+                            <input type="text" id="name" name="name" value="<?php echo isset($name) ? $name : ''; ?>" class="form-control" maxlength="40" <?php echo isset($_GET['del_id']) ? 'disabled' : ''; ?>>
+                        </div>
+                        <div class="form-group">
+                            <label>Mobile</label>
+                            <input type="text" id="mobile" name="mobile" value="<?php echo isset($mobile) ? $mobile : ''; ?>" class="form-control" maxlength="10" <?php echo isset($_GET['del_id']) ? 'disabled' : ''; ?>>
+                        </div>
+                        <div class="form-group">
+                            <label>GST</label>
+                            <input type="text" id="gst" name="gst" value="<?php echo isset($gst) ? $gst : ''; ?>" class="form-control" maxlength="15" <?php echo isset($_GET['del_id']) ? 'disabled' : ''; ?>>
+                        </div>
+                        <div class="form-group">
+                            <label>Bank</label>
+                            <textarea class="form-control" id="bank" name="bank" rows="1" <?php echo isset($_GET['del_id']) ? 'disabled' : ''; ?>><?php echo isset($bank) ? $bank : ''; ?></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label>Address</label>
+                            <textarea class="form-control" id="address" name="address" rows="1" <?php echo isset($_GET['del_id']) ? 'disabled' : ''; ?>><?php echo isset($address) ? $address : ''; ?></textarea>
+                        </div>
+                        <a class="badge badge-primary" href="SupplierEntry.php">Reset</a>
+                        <button id="save" type="submit" name="<?php echo isset($_GET['edit_id']) ? 'update' : (isset($_GET['del_id']) ? 'delete' : 'supplier_submit'); ?>" value="submit" class="badge badge-success">Submit</button>
+                    </form>
                 </div>
-                 <form method="post"  enctype="multipart/form-data">
-                <!-- <div class="form-group">
-                        <label>Banner Image Uplaod</label>
-                        <input type="file"   name="uploadfile" class="form-control-file form-control height-auto">
-                        <small class="form-text text-muted">
-                          Notes : Banner width:1920px and height:1080px.
-                        </small>
-                    </div> -->
-                    <div class="form-group">
-                        <label>Title</label>
-                        <input type="text" name="ab_b_title" class="form-control">
-                        <small class="form-text text-muted">
-                          Notes : Help notes
-                        </small>
+                <?php
+                $user_name="Admin";
+                $ip_address="10.10";
+                if(isset($_POST['supplier_submit'])){
+                    $name = $_POST['name'];
+                    $mobile = $_POST['mobile'];
+                    $gst = $_POST['gst'];
+                    $bank = $_POST['bank'];
+                    $address = $_POST['address'];
+
+                    $insert_qry = "INSERT INTO supplier (name, mobile, gst, bank, address,isactive,ins_username,ins_ipaddress,ins_date) VALUES ('$name', '$mobile', '$gst', '$bank', '$address','1','$user_name','$ip_address',now())";
+                    $res_insert_qry = mysqli_query($dbcon1, $insert_qry);
+
+                    if($res_insert_qry){
+                        echo "<script>alert('Supplier Added successfully'); window.location.href='SupplierEntry.php';</script>";
+                    } else {
+                        echo "Check Insert Query";
+                    }
+                }
+
+                if(isset($_POST['update'])){
+                    $edit_id = $_GET['edit_id'];
+                    $name = $_POST['name'];
+                    $mobile = $_POST['mobile'];
+                    $gst = $_POST['gst'];
+                    $bank = $_POST['bank'];
+                    $address = $_POST['address'];
+
+                    $update_qry = "UPDATE supplier SET name='$name', mobile='$mobile', gst='$gst', bank='$bank', address='$address',upd_username='$user_name',upd_ipaddress='$ip_address',upd_date=now() WHERE supplier_id='$edit_id'";
+                    $res_update_qry = mysqli_query($dbcon1, $update_qry);
+
+                    if($res_update_qry){
+                        echo "<script>alert('Supplier Detail Updated successful'); window.location.href='SupplierEntry.php';</script>";
+                    } else {
+                        echo "Check Update Query";
+                    }
+                }
+
+                if(isset($_POST['delete'])){
+                    $edit_id = $_GET['del_id'];
+
+                    $delete_qry = "UPDATE supplier SET del_flag='Y',del_username='$user_name',del_ipaddress='$ip_address',del_date=now() WHERE supplier_id='$edit_id'";
+                    $res_delete_qry = mysqli_query($dbcon1, $delete_qry);
+
+                    if($res_delete_qry){
+                        echo "<script>alert('Supplier Permanently Delete successful'); window.location.href='SupplierEntry.php';</script>";
+                    } else {
+                        echo "Supplier Query check";
+                    }
+                }
+
+                if(isset($_GET['upd'])){
+                   
+                 $id_fp=$_REQUEST['upd']; 
+                    if(!empty($id_fp))
+                    {
+                      $query = "SELECT isactive FROM `supplier` WHERE  `supplier_id`=".$id_fp."";
+                      $execute_qry = mysqli_query($dbcon1,$query)or die("Sustainability Box Icon Retriew Error!");          
+                      while($team = mysqli_fetch_array($execute_qry)) {
+                      $active_record = $team['isactive'];
+                      if ($active_record =='0')
+                      {
+                        $insq1 = mysqli_query($dbcon1,"UPDATE `supplier` SET `isactive`='1' WHERE `supplier_id`=".$id_fp."") or die(mysqli_Error($dbcon1));
+                        if($insq1)
+                        {
+                          echo('<script type="text/javascript">alert(" Activated Sucessfully"); window.location="SupplierEntry.php";</script>');
+                         // $post_msg = "client Delete successfully";
+                        }
+                        else
+                        {
+                          echo('<script type="text/javascript">alert(" Activation Problems"); window.location="SupplierEntry.php";</script>');
+                          //$err_msg = "client Delete Problems";
+                        }
+                        }
+                      else
+                      {
+                          $insq1 = mysqli_query($dbcon1,"UPDATE supplier SET isactive ='0'  WHERE `supplier_id`=".$id_fp."") or die(mysqli_Error($dbcon1));
+                        if($insq1)
+                        {
+                          echo('<script type="text/javascript">alert(" UnActivated Sucessfully"); window.location="SupplierEntry.php";</script>');
+                         // $post_msg = "client Delete successfully";
+                        }
+                        else
+                        {
+                          echo('<script type="text/javascript">alert("UnActivated Problems"); window.location="SupplierEntry.php";</script>');
+                          //$err_msg = "client Delete Problems";
+                        }
+                      }
+                      }
+                    }
+                  }  
+                     
+                ?>
+                <!-- Backend Form End -->
+
+                <!-- Data tables start -->
+                <div class="pd-20 card-box mb-30">
+                    <div class="clearfix mb-20">
+                        <div class="pull-left">
+                            <h4 class="text-blue h4">Suppliers Details</h4>
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label>Content</label>
-                        <input type="text" name="ab_b_content" class="form-control">
-                        <small class="form-text text-muted">
-                          Notes : Help notes
-                        </small>
-                    </div>
-                    <button type="reset" class="btn btn-primary">Reset</button>
-                    <button type="submit" class="btn btn-success">Submit</button>
-                </form>
+                    <table id="supplierTable" class="display table table-bordered">
+                        <thead>
+                            <tr class="table-primary">
+                                <th scope="col">SL.No.</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Mobile</th>
+                                <th scope="col">GST</th>
+                                <th scope="col">Bank</th>
+                                <th scope="col">Address</th>
+                                <th scope="col">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php
+                            $query = "SELECT * FROM supplier where del_flag is null";
+                            $execute_qry = mysqli_query($dbcon1, $query) or die("Supplier Retrieval Error!");
+                            $i = 0;
+                            while ($team = mysqli_fetch_array($execute_qry)) {
+                                $i++;
+                                $supplier_id = $team['supplier_id'];
+                                $name = $team['name'];
+                                $mobile = $team['mobile'];
+                                $gst = $team['gst'];
+                                $bank = $team['bank'];
+                                $address = $team['address'];
+                                $active_record = $team['isactive'];
+                            ?>
+                            <tr>
+                                <th scope="row"><?php echo $i; ?></th>
+                                <td><?php echo $name; ?></td>
+                                <td><?php echo $mobile; ?></td>
+                                <td><?php echo $gst; ?></td>
+                                <td><?php echo $bank; ?></td>
+                                <td><?php echo $address; ?></td>
+                                <td>
+                                <a href='?upd=<?php echo $supplier_id; ?>'><?php if($active_record == 0) { ?><span class="badge badge-danger">InActive</span><?php } else{ ?><span class="badge badge-success">Active</span><?php } ?></a>&nbsp; 
+                                    <a class="badge badge-warning" href="SupplierEntry.php?edit_id=<?php echo $supplier_id; ?>">Edit</a>
+                                    <a class="badge badge-danger" href="SupplierEntry.php?del_id=<?php echo $supplier_id; ?>">Delete</a>
+                                </td>
+                            </tr>
+                            <?php } ?>
+                        </tbody>
+                    </table>
+                </div>
+                <!-- Data tables end -->
             </div>
-				<?php
-					if(!empty($post_msg))
-					{
-						echo "<p style='color:green;font-weight:bold;'>".$post_msg."</p>";
-					}
-					
-          			else if(!empty($err_msg))
-					{
-						echo "<p style='color:red;font-weight:bold;'>".$err_msg."</p>";
-					}else if(!empty($url_Error))
-					{
-						echo "<p style='color:red;font-weight:bold;'>".$url_Error."</p>";
-					}
-					 
-					?>
-						
-         <!-- backend Form End-->
+            <?php include 'footer.php'; ?>
+        </div>
+    </div>
 
-
-        <!-- Data tables strt -->
-
-				<div class="pd-20 card-box mb-30">
-					<div class="clearfix mb-20">
-						<div class="pull-left">
-							<h4 class="text-blue h4">Banners</h4>
-						</div>
-					</div>
-					<table class="table table-bordered">
-						<thead>
-							<tr class="table-primary">
-								<th scope="col">SL.No.</th>
-								<!-- <th scope="col">Banner</th> -->
-								<th scope="col">Title</th>
-								<th scope="col">Content</th>
-								<th scope="col">Status</th>
-							</tr>
-						</thead>
-						<tbody>
-
-				<?php
-                   $query = "SELECT `id_ab_banner`,`ab_b_title`, `ab_b_content`, `date_time`, `active_record` FROM `ab_banner`";
-                   $execute_qry = mysqli_query($dbcon1,$query)or die("Banner Retriew Error!");          
-                   $i=0;
-				   while($team = mysqli_fetch_array($execute_qry)) {
-				   $i++;
-                   $id_ab_banner = $team['id_ab_banner'];
-                  //  $ab_b_img_path = $team['ab_b_img_path'];
-                   $ab_b_title = $team['ab_b_title'];
-                   $ab_b_content = $team['ab_b_content'];
-                   $active_record = $team['active_record'];
-                ?>
-							<tr>
-								<th scope="row"><?php print $i ?></th>
-								<!-- <td><img src="<!?php print $ab_b_img_path?>"  width="50px" height="50px"></td> -->
-								<td><?php print $ab_b_title?></td>
-								<td><?php print $ab_b_content?> </td>
-								<td><a href='?upd=<?php print $id_ab_banner ?>'><?php if($active_record == 0) { ?><span class="badge badge-danger">InActive</span><?php } else{ ?><span class="badge badge-success">Active</span><?php } ?></a>&nbsp; 
-									<a href='?id_fp=<?php print $id_ab_banner ?>'><input type='hidden' name='po' value="<?php print $id_ab_banner ?>"/><span class="badge badge-warning">Edit</span></a>&nbsp;
-									<a href='?del=<?php print $id_ab_banner ?>'><input type='hidden' name='dl' value="<?php print $id_ab_banner ?>"/> <span class="badge badge-danger">Delete</span></a>
-							   </td>
-							</tr>
-				<?php
-                  }
-                ?>
-						</tbody>
-					</table>
-				</div>		
-				
-				<!-- data tables end -->
-			</div>
-
-			<?php
-			}         
-			include 'footer.php';?>
-		</div>
-	</div>
-  <!-- js -->
-	<script src="vendors/scripts/core.js"></script>
+    <!-- JS -->
+  
+   
+    <script src="vendors/scripts/process.js"></script>
+    <script src="vendors/scripts/layout-settings.js"></script>
+    <script src="vendors/scripts/core.js"></script>
 	<script src="vendors/scripts/script.min.js"></script>
-	<script src="vendors/scripts/process.js"></script>
-	<script src="vendors/scripts/layout-settings.js"></script>
-	<!-- lafs -->
-	<script src="lib/jquery/jquery.min.js"></script>
-    <link rel="stylesheet" href="lib/datatable/jquery.dataTables.min.css">
-    <script src="lib/datatable/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+    <script>
+		  $(document).ready(function() {
+		$(document).on('click', '#save', function(event) {
+		
+            var name = $('#name').val();
+			var mobile = $('#mobile').val();
+            var gst = $('#gst').val();
+            var bank = $('#bank').val();
+            var address = $('#address').val();
+		
+			if(name==''){
+				alert('Enter Supplier Name');
+				$('#name').focus();
+				return false;
+			}
+			if(mobile==''){
+				alert('Enter Mobile Number');
+				$('#mobile').focus();
+				return false;
+			}
+			if(gst==''){
+				alert('Enter GST Number');
+				$('#gst').focus();
+				return false;
+			}
+			if(bank==''){
+				alert('Enter Bank Details');
+				$('#bank').focus();
+				return false;
+			}
+			if(address==''){
+				alert('Enter Address');
+				$('#address').focus();
+				return false;
+			}
+           
+            if (name === '' || mobile === '' || gst === '' || bank === '' || address === '') {
+                e.preventDefault();
+                alert('Please fill in all required fields.');
+            }
+        });
+	});
+		</script>
+    <script>
+        $(document).ready(function() {
+            $('#supplierTable').DataTable();
+        });
+		
+        // Validate phone number function
+        const inputField = document.querySelector('#mobile');
+        inputField.addEventListener('keydown', (event) => {
+            const allowedKeys = ['Backspace', 'ArrowLeft', 'ArrowRight', 'Delete'];
+            if (!/[0-9]/.test(event.key) && !allowedKeys.includes(event.key)) {
+                event.preventDefault();
+            }
+        });
 
-	<script>
-          $(document).ready(function () {
-    // Setup - add a text input to each footer cell
-    $('#example thead tr')
-        .clone(true)
-        .addClass('filters')
-        .appendTo('#example thead');
- 
-    var table = $('#example').DataTable({
-        orderCellsTop: true,
-        fixedHeader: true,
-        initComplete: function () {
-            var api = this.api();
- 
-            // For each column
-            api
-                .columns()
-                .eq(0)
-                .each(function (colIdx) {
-                    // Set the header cell to contain the input element
-                    var cell = $('.filters th').eq(
-                        $(api.column(colIdx).header()).index()
-                    );
-                    var title = $(cell).text();
-                    $(cell).html('<input type="text" placeholder="' + title + '" />');
- 
-                    // On every keypress in this input
-                    $(
-                        'input',
-                        $('.filters th').eq($(api.column(colIdx).header()).index())
-                    )
-                        .off('keyup change')
-                        .on('keyup change', function (e) {
-                            e.stopPropagation();
- 
-                            // Get the search value
-                            $(this).attr('title', $(this).val());
-                            var regexr = '({search})'; //$(this).parents('th').find('select').val();
- 
-                            var cursorPosition = this.selectionStart;
-                            // Search the column for that value
-                            api
-                                .column(colIdx)
-                                .search(
-                                    this.value != ''
-                                        ? regexr.replace('{search}', '(((' + this.value + ')))')
-                                        : '',
-                                    this.value != '',
-                                    this.value == ''
-                                )
-                                .draw();
- 
-                            $(this)
-                                .focus()[0]
-                                .setSelectionRange(cursorPosition, cursorPosition);
-                        });
-                });
-        },
-    });
-});
-        </script>
-
-
-	
+        // Validate name field function
+        const nameField = document.querySelector('input[name="name"]');
+        nameField.addEventListener('keydown', (event) => {
+            const allowedKeys = ['Backspace', 'ArrowLeft', 'ArrowRight', 'Space', 'Delete'];
+            if (!/[a-zA-Z]/.test(event.key) && !allowedKeys.includes(event.key)) {
+                event.preventDefault();
+            }
+        });
+    </script>
 </body>
 </html>
