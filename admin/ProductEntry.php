@@ -92,7 +92,7 @@ include("include/config.php");
                         <div class="form-group">
                             <label>Category Name</label>
                             <select id="category_id" name="category_id" class="form-control" <?php echo isset($_GET['del_id']) ? 'disabled' : ''; ?>>
-                            <option value="">Select Category Name</option> <!-- Ensure the default option has an empty value -->
+                            <option value="">Select Category Name</option> 
                             <?php
                             $query = "SELECT * FROM category WHERE del_flag IS NULL";
                             $execute_qry = mysqli_query($dbcon1, $query) or die("Supplier Retrieval Error!");
@@ -108,7 +108,7 @@ include("include/config.php");
                         </select>
 
                         <script>
-                            // Make sure the variable edit_category_id is defined in PHP
+                            
                             document.getElementById("category_id").value = "<?php echo $edit_category_id; ?>";
                         </script>                
                         </div>
