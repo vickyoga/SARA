@@ -30,7 +30,7 @@
 						</li> -->
 						<li><a href="CategoryEntry.php">Category</a>
 						</li>
-						<li><a href="hu_su.php">product</a>
+						<li><a href="ProductEntry.php">product</a>
 						</li>
 						<!-- <li><a href="hu_ca.php">Careers</a>
 						</li> -->
