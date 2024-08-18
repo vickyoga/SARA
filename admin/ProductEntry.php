@@ -76,6 +76,8 @@ include("include/config.php");
                         $product_name = $row['product_name'];
                         $product_description = $row['product_description'];
                         $product_unit = $row['product_unit'];
+                        $gst = $row['gst'];
+                        
                         
                     }
                 }
@@ -125,6 +127,10 @@ include("include/config.php");
                             <label>product unit</label>
                             <input type="text" id="product_unit" name="product_unit" value="<?php echo isset($product_unit) ? $product_unit : ''; ?>" class="form-control" maxlength="20" <?php echo isset($_GET['del_id']) ? 'disabled' : ''; ?>>
                         </div>
+                        <div class="form-group">
+                            <label>GST</label>
+                            <input type="text" id="gst" name="gst" value="<?php echo isset($gst) ? $gst : ''; ?>" class="form-control" maxlength="20" <?php echo isset($_GET['del_id']) ? 'disabled' : ''; ?>>
+                        </div>
                         <a class="badge badge-primary" href="ProductEntry.php">Reset</a>
                         <button id="save" type="submit" name="<?php echo isset($_GET['edit_id']) ? 'update' : (isset($_GET['del_id']) ? 'delete' : 'product_submit'); ?>" value="submit" class="badge badge-success">Submit</button>
                     </form>
@@ -138,9 +144,10 @@ include("include/config.php");
                     $product_name = $_POST['product_name'];
                     $product_description = $_POST['product_description'];
                     $product_unit = $_POST['product_unit'];
+                    $gst = $_POST['gst'];
                    
 
-                    $insert_qry = "INSERT INTO product (category_id, product_name, product_description, product_unit,isactive,ins_username,ins_ipaddress,ins_date) VALUES ('$category_id', '$product_name', '$product_description', '$product_unit','1','$user_name','$ip_address',now())";
+                    $insert_qry = "INSERT INTO product (category_id, product_name, product_description, product_unit,gst,isactive,ins_username,ins_ipaddress,ins_date) VALUES ('$category_id', '$product_name', '$product_description', '$product_unit', $gst,'1','$user_name','$ip_address',now())";
                     $res_insert_qry = mysqli_query($dbcon1, $insert_qry);
 
                     if($res_insert_qry){
@@ -156,8 +163,9 @@ include("include/config.php");
                     $product_name = $_POST['product_name'];
                     $product_description = $_POST['product_description'];
                     $product_unit = $_POST['product_unit'];
+                    $gst = $_POST['gst'];
 
-                    $update_qry = "UPDATE product SET category_id='$category_id', product_name='$product_name', product_description='$product_description', product_unit='$product_unit',upd_username='$user_name',upd_ipaddress='$ip_address',upd_date=now() WHERE product_id='$edit_id'";
+                    $update_qry = "UPDATE product SET category_id='$category_id', product_name='$product_name', product_description='$product_description', product_unit='$product_unit',gst='$gst',upd_username='$user_name',upd_ipaddress='$ip_address',upd_date=now() WHERE product_id='$edit_id'";
                     $res_update_qry = mysqli_query($dbcon1, $update_qry);
 
                     if($res_update_qry){
@@ -239,12 +247,13 @@ include("include/config.php");
                                 <th scope="col">Product Name</th>
                                 <th scope="col">Product DesCription</th>
                                 <th scope="col">product unit</th>
+                                <th scope="col">GST</th>
                                 <th scope="col">Action</th>
                             </tr>
                         </thead>
                         <tbody>
                             <?php
-                            $query = "select product_id,category_name,product_name,product_description,product_unit,a.isactive from (SELECT * FROM product where del_flag is null)as a
+                            $query = "select product_id,category_name,product_name,product_description,product_unit,gst,a.isactive from (SELECT * FROM product where del_flag is null)as a
                                         left join
                                         (select * from category where del_flag is null)as b on a.category_id=b.category_id";
                             $execute_qry = mysqli_query($dbcon1, $query) or die("Supplier Retrieval Error!");
@@ -256,6 +265,7 @@ include("include/config.php");
                                 $product_name = $team['product_name'];
                                 $product_description = $team['product_description'];
                                 $product_unit = $team['product_unit'];
+                                $gst = $team['gst'];
                                 $active_record = $team['isactive'];
                             ?>
                             <tr>
@@ -264,6 +274,7 @@ include("include/config.php");
                                 <td><?php echo $product_name; ?></td>
                                 <td><?php echo $product_description; ?></td>
                                 <td><?php echo $product_unit; ?></td>
+                                <td><?php echo $gst; ?></td>
                               
                                 <td>
                                 <a href='?upd=<?php echo $product_id; ?>'><?php if($active_record =='0') { ?><span class="badge badge-danger">InActive</span><?php } else{ ?><span class="badge badge-success">Active</span><?php } ?></a>&nbsp; 
@@ -319,6 +330,11 @@ include("include/config.php");
 				$('#product_unit').focus();
 				return false;
 			}
+            if(gst==''){
+				alert('Enter gst');
+				$('#product_unit').focus();
+				return false;
+			}
 			
            
         });
@@ -337,15 +353,15 @@ include("include/config.php");
                 event.preventDefault();
             }
         });
-
-        // Validate name field function
-        const nameField = document.querySelector('input[name="name"]');
-        nameField.addEventListener('keydown', (event) => {
-            const allowedKeys = ['Backspace', 'ArrowLeft', 'ArrowRight', 'Space', 'Delete'];
-            if (!/[a-zA-Z]/.test(event.key) && !allowedKeys.includes(event.key)) {
+        const inputField_1 = document.querySelector('#gst');
+        inputField_1.addEventListener('keydown', (event) => {
+            const allowedKeys = ['Backspace', 'ArrowLeft', 'ArrowRight', 'Delete'];
+            if (!/[0-9]/.test(event.key) && !allowedKeys.includes(event.key)) {
                 event.preventDefault();
             }
         });
+
+      
     </script>
 </body>
 </html>

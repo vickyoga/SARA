@@ -44,7 +44,7 @@
 						<ul class="submenu">
 						<!-- <li><a href="heritage_values.php">Heritage & Values</a>
 						</li> -->
-						<li><a href="a_h_b.php">Purchase</a>
+						<li><a href="In_ward.php">IN-WARD</a>
 						</li>
 						<li><a href="a_h_en.php">Purchase Report</a>
 						</li>
