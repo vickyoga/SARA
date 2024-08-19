@@ -54,12 +54,12 @@ include("include/config.php");
                     <div class="row">
                         <div class="col-md-6 col-sm-12">
                             <div class="title">
-                                <h4>Supplier Entry Form</h4>
+                                <h4>Printer Entry Form</h4>
                             </div>
                             <nav aria-label="breadcrumb" role="navigation">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="index.php">Home</a></li>
-                                    <li class="breadcrumb-item active" aria-current="page"><a href="SupplierEntry.php">Supplier</a></li>
+                                    <li class="breadcrumb-item active" aria-current="page"><a href="Printer_Entry.php">Printer</a></li>
                                 </ol>
                             </nav>
                         </div>
@@ -68,13 +68,12 @@ include("include/config.php");
                 <?php
                 if(isset($_GET['edit_id']) || isset($_GET['del_id'])){
                     $id = isset($_GET['edit_id']) ? $_GET['edit_id'] : $_GET['del_id'];
-                    $sel_user = "SELECT * FROM supplier WHERE supplier_id = $id";
+                    $sel_user = "SELECT * FROM printer WHERE printer_id = $id";
                     $res_sel_user = mysqli_query($dbcon1, $sel_user);
                     while($row = mysqli_fetch_assoc($res_sel_user)){
-                        $name = $row['name'];
+                        $printer_name = $row['printer_name'];
+                        $contact_person_name = $row['contact_person_name'];
                         $mobile = $row['mobile'];
-                        $gst = $row['gst'];
-                        $bank = $row['bank'];
                         $address = $row['address'];
                     }
                 }
@@ -83,50 +82,50 @@ include("include/config.php");
                 <div class="pd-20 card-box mb-30">
                     <div class="clearfix">
                         <div class="pull-left">
-                            <h4 class="text-blue h4">Supplier Details</h4>
+                            <h4 class="text-blue h4">Printer Details</h4>
                         </div>
                     </div>
                     <form id="supplierForm" method="post" autocomplete="off" enctype="multipart/form-data">
 
                         <div class="form-group">
-                            <label>Name</label>
-                            <input type="text" id="name" name="name" value="<?php echo isset($name) ? $name : ''; ?>" class="form-control" maxlength="40" <?php echo isset($_GET['del_id']) ? 'disabled' : ''; ?>>
+                            <label>Printer Name</label>
+                            <input type="text" id="printer_name" name="printer_name" value="<?php echo isset($printer_name) ? $printer_name : ''; ?>" class="form-control" maxlength="40" <?php echo isset($_GET['del_id']) ? 'disabled' : ''; ?>>
                         </div>
+
+                        <div class="form-group">
+                            <label>Contact Person Name</label>
+                            <input type="text" id="contact_person_name" name="contact_person_name" value="<?php echo isset($contact_person_name) ? $contact_person_name : ''; ?>" class="form-control" maxlength="40" <?php echo isset($_GET['del_id']) ? 'disabled' : ''; ?>>
+                        </div>
+
                         <div class="form-group">
                             <label>Mobile</label>
                             <input type="text" id="mobile" name="mobile" value="<?php echo isset($mobile) ? $mobile : ''; ?>" class="form-control" maxlength="10" <?php echo isset($_GET['del_id']) ? 'disabled' : ''; ?>>
                         </div>
+                      
+                       
                         <div class="form-group">
-                            <label>GST Number</label>
-                            <input type="text" id="gst" name="gst" value="<?php echo isset($gst) ? $gst : ''; ?>" class="form-control" maxlength="15" <?php echo isset($_GET['del_id']) ? 'disabled' : ''; ?>>
-                        </div>
-                        <div class="form-group">
-                            <label>Bank</label>
-                            <textarea class="form-control" id="bank" name="bank" rows="1" <?php echo isset($_GET['del_id']) ? 'disabled' : ''; ?>><?php echo isset($bank) ? $bank : ''; ?></textarea>
-                        </div>
-                        <div class="form-group">
-                            <label>Address</label>
+                            <label>Printer Address</label>
                             <textarea class="form-control" id="address" name="address" rows="1" <?php echo isset($_GET['del_id']) ? 'disabled' : ''; ?>><?php echo isset($address) ? $address : ''; ?></textarea>
                         </div>
+
                         <a class="badge badge-primary" href="SupplierEntry.php">Reset</a>
-                        <button id="save" type="submit" name="<?php echo isset($_GET['edit_id']) ? 'update' : (isset($_GET['del_id']) ? 'delete' : 'supplier_submit'); ?>" value="submit" class="badge badge-success">Submit</button>
+                        <button id="save" type="submit" name="<?php echo isset($_GET['edit_id']) ? 'update' : (isset($_GET['del_id']) ? 'delete' : 'printer_submit'); ?>" value="submit" class="badge badge-success">Submit</button>
                     </form>
                 </div>
                 <?php
                 $user_name="Admin";
                 $ip_address="10.10";
-                if(isset($_POST['supplier_submit'])){
-                    $name = $_POST['name'];
+                if(isset($_POST['printer_submit'])){
+                    $printer_name = $_POST['printer_name'];
+                    $contact_person_name = $_POST['contact_person_name'];
                     $mobile = $_POST['mobile'];
-                    $gst = $_POST['gst'];
-                    $bank = $_POST['bank'];
                     $address = $_POST['address'];
 
-                    $insert_qry = "INSERT INTO supplier (name, mobile, gst, bank, address,isactive,ins_username,ins_ipaddress,ins_date) VALUES ('$name', '$mobile', '$gst', '$bank', '$address','1','$user_name','$ip_address',now())";
+                    $insert_qry = "INSERT INTO printer (printer_name, contact_person_name , mobile, address,isactive,ins_username,ins_ipaddress,ins_date) VALUES ('$printer_name','$contact_person_name', '$mobile',  '$address','1','$user_name','$ip_address',now())";
                     $res_insert_qry = mysqli_query($dbcon1, $insert_qry);
 
                     if($res_insert_qry){
-                        echo "<script>alert('Supplier Added successfully'); window.location.href='SupplierEntry.php';</script>";
+                        echo "<script>alert('Printer Added successfully'); window.location.href='Printer_Entry.php';</script>";
                     } else {
                         echo "Check Insert Query";
                     }
@@ -134,17 +133,16 @@ include("include/config.php");
 
                 if(isset($_POST['update'])){
                     $edit_id = $_GET['edit_id'];
-                    $name = $_POST['name'];
+                    $printer_name = $_POST['printer_name'];
+                    $contact_person_name = $_POST['contact_person_name'];
                     $mobile = $_POST['mobile'];
-                    $gst = $_POST['gst'];
-                    $bank = $_POST['bank'];
                     $address = $_POST['address'];
 
-                    $update_qry = "UPDATE supplier SET name='$name', mobile='$mobile', gst='$gst', bank='$bank', address='$address',upd_username='$user_name',upd_ipaddress='$ip_address',upd_date=now() WHERE supplier_id='$edit_id'";
+                    $update_qry = "UPDATE printer SET printer_name='$printer_name', contact_person_name='$contact_person_name',  mobile='$mobile', address='$address',upd_username='$user_name',upd_ipaddress='$ip_address',upd_date=now() WHERE printer_id='$edit_id'";
                     $res_update_qry = mysqli_query($dbcon1, $update_qry);
 
                     if($res_update_qry){
-                        echo "<script>alert('Supplier Detail Updated successful'); window.location.href='SupplierEntry.php';</script>";
+                        echo "<script>alert('Printer Detail Updated successful'); window.location.href='Printer_Entry.php';</script>";
                     } else {
                         echo "Check Update Query";
                     }
@@ -153,13 +151,13 @@ include("include/config.php");
                 if(isset($_POST['delete'])){
                     $edit_id = $_GET['del_id'];
 
-                    $delete_qry = "UPDATE supplier SET del_flag='Y',del_username='$user_name',del_ipaddress='$ip_address',del_date=now() WHERE supplier_id='$edit_id'";
+                    $delete_qry = "UPDATE printer SET del_flag='Y',del_username='$user_name',del_ipaddress='$ip_address',del_date=now() WHERE printer_id='$edit_id'";
                     $res_delete_qry = mysqli_query($dbcon1, $delete_qry);
 
                     if($res_delete_qry){
-                        echo "<script>alert('Supplier Permanently Delete successful'); window.location.href='SupplierEntry.php';</script>";
+                        echo "<script>alert('Printer Permanently Delete successful'); window.location.href='Printer_Entry.php';</script>";
                     } else {
-                        echo "Supplier Query check";
+                        echo "printer Query check";
                     }
                 }
 
@@ -168,35 +166,35 @@ include("include/config.php");
                  $id_fp=$_REQUEST['upd']; 
                     if(!empty($id_fp))
                     {
-                      $query = "SELECT isactive FROM `supplier` WHERE  `supplier_id`=".$id_fp."";
+                      $query = "SELECT isactive FROM `printer` WHERE  `printer_id`=".$id_fp."";
                       $execute_qry = mysqli_query($dbcon1,$query)or die("Sustainability Box Icon Retriew Error!");          
                       while($team = mysqli_fetch_array($execute_qry)) {
                       $active_record = $team['isactive'];
                       if ($active_record =='0')
                       {
-                        $insq1 = mysqli_query($dbcon1,"UPDATE `supplier` SET `isactive`='1' WHERE `supplier_id`=".$id_fp."") or die(mysqli_Error($dbcon1));
+                        $insq1 = mysqli_query($dbcon1,"UPDATE `printer` SET `isactive`='1' WHERE `printer_id`=".$id_fp."") or die(mysqli_Error($dbcon1));
                         if($insq1)
                         {
-                          echo('<script type="text/javascript">alert(" Activated Sucessfully"); window.location="SupplierEntry.php";</script>');
+                          echo('<script type="text/javascript">alert(" Activated Sucessfully"); window.location="Printer_Entry.php";</script>');
                          // $post_msg = "client Delete successfully";
                         }
                         else
                         {
-                          echo('<script type="text/javascript">alert(" Activation Problems"); window.location="SupplierEntry.php";</script>');
+                          echo('<script type="text/javascript">alert(" Activation Problems"); window.location="Printer_Entry.php";</script>');
                           //$err_msg = "client Delete Problems";
                         }
                         }
                       else
                       {
-                          $insq1 = mysqli_query($dbcon1,"UPDATE supplier SET isactive ='0'  WHERE `supplier_id`=".$id_fp."") or die(mysqli_Error($dbcon1));
+                          $insq1 = mysqli_query($dbcon1,"UPDATE printer SET isactive ='0'  WHERE `printer_id`=".$id_fp."") or die(mysqli_Error($dbcon1));
                         if($insq1)
                         {
-                          echo('<script type="text/javascript">alert(" UnActivated Sucessfully"); window.location="SupplierEntry.php";</script>');
+                          echo('<script type="text/javascript">alert(" UnActivated Sucessfully"); window.location="Printer_Entry.php";</script>');
                          // $post_msg = "client Delete successfully";
                         }
                         else
                         {
-                          echo('<script type="text/javascript">alert("UnActivated Problems"); window.location="SupplierEntry.php";</script>');
+                          echo('<script type="text/javascript">alert("UnActivated Problems"); window.location="Printer_Entry.php";</script>');
                           //$err_msg = "client Delete Problems";
                         }
                       }
@@ -211,47 +209,44 @@ include("include/config.php");
                 <div class="pd-20 card-box mb-30">
                     <div class="clearfix mb-20">
                         <div class="pull-left">
-                            <h4 class="text-blue h4">Suppliers Details</h4>
+                            <h4 class="text-blue h4">Printer Details</h4>
                         </div>
                     </div>
                     <table id="supplierTable" class="display table table-bordered">
                         <thead>
                             <tr class="table-primary">
                                 <th scope="col">SL.No.</th>
-                                <th scope="col">Name</th>
+                                <th scope="col">Printer Name</th>
+                                <th scope="col">Contact Person Name</th>
                                 <th scope="col">Mobile</th>
-                                <th scope="col">GST Number</th>
-                                <th scope="col">Bank</th>
                                 <th scope="col">Address</th>
                                 <th scope="col">Action</th>
                             </tr>
                         </thead>
                         <tbody>
                             <?php
-                            $query = "SELECT * FROM supplier where del_flag is null";
+                            $query = "SELECT * FROM printer where del_flag is null";
                             $execute_qry = mysqli_query($dbcon1, $query) or die("Supplier Retrieval Error!");
                             $i = 0;
                             while ($team = mysqli_fetch_array($execute_qry)) {
                                 $i++;
-                                $supplier_id = $team['supplier_id'];
-                                $name = $team['name'];
+                                $printer_id = $team['printer_id'];
+                                $printer_name = $team['printer_name'];
+                                $contact_person_name = $team['contact_person_name'];
                                 $mobile = $team['mobile'];
-                                $gst = $team['gst'];
-                                $bank = $team['bank'];
                                 $address = $team['address'];
                                 $active_record = $team['isactive'];
                             ?>
                             <tr>
                                 <th scope="row"><?php echo $i; ?></th>
-                                <td><?php echo $name; ?></td>
+                                <td><?php echo $printer_name; ?></td>
+                                <td><?php echo $contact_person_name; ?></td>
                                 <td><?php echo $mobile; ?></td>
-                                <td><?php echo $gst; ?></td>
-                                <td><?php echo $bank; ?></td>
                                 <td><?php echo $address; ?></td>
                                 <td>
-                                <a href='?upd=<?php echo $supplier_id; ?>'><?php if($active_record == 0) { ?><span class="badge badge-danger">InActive</span><?php } else{ ?><span class="badge badge-success">Active</span><?php } ?></a>&nbsp; 
-                                    <a class="badge badge-warning" href="SupplierEntry.php?edit_id=<?php echo $supplier_id; ?>">Edit</a>
-                                    <a class="badge badge-danger" href="SupplierEntry.php?del_id=<?php echo $supplier_id; ?>">Delete</a>
+                                <a href='?upd=<?php echo $printer_id; ?>'><?php if($active_record == 0) { ?><span class="badge badge-danger">InActive</span><?php } else{ ?><span class="badge badge-success">Active</span><?php } ?></a>&nbsp; 
+                                    <a class="badge badge-warning" href="Printer_Entry.php?edit_id=<?php echo $printer_id; ?>">Edit</a>
+                                    <a class="badge badge-danger" href="Printer_Entry.php?del_id=<?php echo $printer_id; ?>">Delete</a>
                                 </td>
                             </tr>
                             <?php } ?>
@@ -276,39 +271,37 @@ include("include/config.php");
 		  $(document).ready(function() {
 		$(document).on('click', '#save', function(event) {
 		
-            var name = $('#name').val();
+            var printer_name = $('#printer_name').val();
+            var contact_person_name = $('#contact_person_name').val();
 			var mobile = $('#mobile').val();
-            var gst = $('#gst').val();
-            var bank = $('#bank').val();
             var address = $('#address').val();
 		
-			if(name==''){
-				alert('Enter Supplier Name');
-				$('#name').focus();
+			if(printer_name==''){
+				alert('Enter Printer Name');
+				$('#printer_name').focus();
 				return false;
 			}
+
+            if(contact_person_name==''){
+				alert('Enter Contact Person Name');
+				$('#contact_person_name').focus();
+				return false;
+			}
+
 			if(mobile==''){
 				alert('Enter Mobile Number');
 				$('#mobile').focus();
 				return false;
 			}
-			if(gst==''){
-				alert('Enter GST Number');
-				$('#gst').focus();
-				return false;
-			}
-			if(bank==''){
-				alert('Enter Bank Details');
-				$('#bank').focus();
-				return false;
-			}
+			
+		
 			if(address==''){
 				alert('Enter Address');
 				$('#address').focus();
 				return false;
 			}
            
-            if (name === '' || mobile === '' || gst === '' || bank === '' || address === '') {
+            if (name === '' || gst === '' || mobile === ''  || address === '') {
                 e.preventDefault();
                 alert('Please fill in all required fields.');
             }

@@ -75,7 +75,7 @@ include("include/config.php");
                         $edit_category_id = $row['category_id'];
                         $product_name = $row['product_name'];
                         $product_description = $row['product_description'];
-                        $product_unit = $row['product_unit'];
+                        $edit_product_unit = $row['product_unit'];
                         $gst = $row['gst'];
                         
                         
@@ -123,12 +123,40 @@ include("include/config.php");
                             <label>product description</label>
                             <textarea class="form-control" id="product_description" name="product_description" rows="1" <?php echo isset($_GET['del_id']) ? 'disabled' : ''; ?>><?php echo isset($product_description) ? $product_description : ''; ?></textarea>
                         </div>
+
+
                         <div class="form-group">
                             <label>product unit</label>
-                            <input type="text" id="product_unit" name="product_unit" value="<?php echo isset($product_unit) ? $product_unit : ''; ?>" class="form-control" maxlength="20" <?php echo isset($_GET['del_id']) ? 'disabled' : ''; ?>>
+                            <select id="product_unit" name="product_unit" class="form-control" <?php echo isset($_GET['del_id']) ? 'disabled' : ''; ?>>
+                            <option value="">Select product unit</option> 
+                            <?php
+                            $query = "SELECT * FROM unit WHERE del_flag IS NULL";
+                            $execute_qry = mysqli_query($dbcon1, $query) or die("Supplier Retrieval Error!");
+
+                            while ($team = mysqli_fetch_array($execute_qry)) {
+                                $unit_id = $team['unit_id'];
+                                $unit = $team['unit'];
+                            ?>
+                                <option value="<?php echo $unit_id; ?>"><?php echo $unit; ?></option>
+                            <?php
+                            }
+                            ?>
+                        </select>
+
+                        <script>
+                            
+                            document.getElementById("product_unit").value = "<?php echo $edit_product_unit; ?>";
+                        </script>                
                         </div>
+
+
+                        <!-- <div class="form-group">
+                            <label>product unit</label>
+                            <input type="text" id="product_unit" name="product_unit" value="<!?php echo isset($product_unit) ? $product_unit : ''; ?>" class="form-control" maxlength="20" <!?php echo isset($_GET['del_id']) ? 'disabled' : ''; ?>>
+                        </div> -->
+
                         <div class="form-group">
-                            <label>GST</label>
+                            <label>GST Percentage</label>
                             <input type="text" id="gst" name="gst" value="<?php echo isset($gst) ? $gst : ''; ?>" class="form-control" maxlength="20" <?php echo isset($_GET['del_id']) ? 'disabled' : ''; ?>>
                         </div>
                         <a class="badge badge-primary" href="ProductEntry.php">Reset</a>
@@ -247,15 +275,16 @@ include("include/config.php");
                                 <th scope="col">Product Name</th>
                                 <th scope="col">Product DesCription</th>
                                 <th scope="col">product unit</th>
-                                <th scope="col">GST</th>
+                                <th scope="col">GST Percentage</th>
                                 <th scope="col">Action</th>
                             </tr>
                         </thead>
                         <tbody>
                             <?php
-                            $query = "select product_id,category_name,product_name,product_description,product_unit,gst,a.isactive from (SELECT * FROM product where del_flag is null)as a
+                            $query = "select product_id,category_name,product_name,product_description,product_unit,unit,gst,a.isactive from (SELECT * FROM product where del_flag is null)as a
                                         left join
-                                        (select * from category where del_flag is null)as b on a.category_id=b.category_id";
+                                        (select * from category where del_flag is null)as b on a.category_id=b.category_id
+     left join(select * from unit where del_flag is null)as c on a.product_unit=c.unit_id";
                             $execute_qry = mysqli_query($dbcon1, $query) or die("Supplier Retrieval Error!");
                             $i = 0;
                             while ($team = mysqli_fetch_array($execute_qry)) {
@@ -264,7 +293,7 @@ include("include/config.php");
                                 $category_name = $team['category_name'];
                                 $product_name = $team['product_name'];
                                 $product_description = $team['product_description'];
-                                $product_unit = $team['product_unit'];
+                                $unit = $team['unit'];
                                 $gst = $team['gst'];
                                 $active_record = $team['isactive'];
                             ?>
@@ -273,7 +302,7 @@ include("include/config.php");
                                 <td><?php echo $category_name; ?></td>
                                 <td><?php echo $product_name; ?></td>
                                 <td><?php echo $product_description; ?></td>
-                                <td><?php echo $product_unit; ?></td>
+                                <td><?php echo $unit; ?></td>
                                 <td><?php echo $gst; ?></td>
                               
                                 <td>

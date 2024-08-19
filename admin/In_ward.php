@@ -96,11 +96,11 @@ include("include/config.php");
 
                         <div class="form-group">
                             <label>IN-Ward date</label>
-                            <input type="date" id="in_ward_date" name="in_ward_date" value="<?php echo isset($in_ward_date) ? $in_ward_date : ''; ?>" class="form-control" maxlength="40" <?php echo isset($_GET['del_id']) ? 'disabled' : ''; ?>>
+                            <input type="date" id="in_ward_date" name="in_ward_date" value="<?php echo isset($in_ward_date) ? $in_ward_date : ''; ?>" class="form-control custom-size" maxlength="40" <?php echo isset($_GET['del_id']) ? 'disabled' : ''; ?>>
                         </div>
                         <div class="form-group">
                             <label>Supplier Name</label>
-                            <select id="supplier_id" name="supplier_id" class="form-control" <?php echo isset($_GET['del_id']) ? 'disabled' : ''; ?>>
+                            <select id="supplier_id" name="supplier_id" class="form-control custom-size" <?php echo isset($_GET['del_id']) ? 'disabled' : ''; ?>>
                             <option value="">Select supplier Name</option> 
                             <?php
                             $query = "SELECT * FROM supplier WHERE del_flag IS NULL";
@@ -121,77 +121,11 @@ include("include/config.php");
                             document.getElementById("supplier_id").value = "<?php echo $edit_supplier_id; ?>";
                         </script>                
                         </div>
-                        <div class="form-group">
-                            <label>Product Name</label>
-                            <select id="product_id" name="product_id" class="form-control" <?php echo isset($_GET['del_id']) ? 'disabled' : ''; ?>>
-                            <option value="">Select product Name</option> 
-                            <?php
-                            $query = "SELECT * FROM product WHERE del_flag IS NULL";
-                            $execute_qry = mysqli_query($dbcon1, $query) or die("product Retrieval Error!");
-
-                            while ($team = mysqli_fetch_array($execute_qry)) {
-                                $product_id = $team['product_id'];
-                                $product_name = $team['product_name'];
-                            ?>
-                                <option value="<?php echo $product_id; ?>"><?php echo $product_name; ?></option>
-                            <?php
-                            }
-                            ?>
-                        </select>
-
-                        <script>
-                            
-                            document.getElementById("product_id").value = "<?php echo $edit_product_id; ?>";
-                        </script>                
+                        <div id="append_div">
                         </div>
-                        <div class="form-group">
-                            <label>Category Name</label>
-                            <select id="category_id" name="category_id" class="form-control" <?php echo isset($_GET['del_id']) ? 'disabled' : ''; ?>>
-                            <option value="">Select category Name</option> 
-                            <?php
-                            $query = "SELECT * FROM category WHERE del_flag IS NULL";
-                            $execute_qry = mysqli_query($dbcon1, $query) or die("category_id Retrieval Error!");
-
-                            while ($team = mysqli_fetch_array($execute_qry)) {
-                                $category_id = $team['category_id'];
-                                $category_name = $team['category_name'];
-                            ?>
-                                <option value="<?php echo $category_id; ?>"><?php echo $category_name; ?></option>
-                            <?php
-                            }
-                            ?>
-                        </select>
-
-                        <script>
-                            
-                            document.getElementById("category_id").value = "<?php echo $edit_category_id; ?>";
-                        </script>                
-                        </div>
-                        <div class="form-group">
-                            <label>Unit</label>
-                            <input type="text" id="unit" name="unit" value="<?php echo isset($unit) ? $unit : ''; ?>" class="form-control" maxlength="15" <?php echo isset($_GET['del_id']) ? 'disabled' : ''; ?>>
-                        </div>
-
-                        <div class="form-group">
-                            <label>gst</label>
-                            <input type="text" id="gst" name="gst" value="<?php echo isset($gst) ? $gst : ''; ?>" class="form-control" maxlength="15" <?php echo isset($_GET['del_id']) ? 'disabled' : ''; ?>>
-                        </div>
-                        <div class="form-group">
-                            <label>qty</label>
-                            <input type="text" id="qty" name="qty" value="<?php echo isset($qty) ? $qty : ''; ?>" class="form-control" maxlength="15" <?php echo isset($_GET['del_id']) ? 'disabled' : ''; ?>>
-                        </div>
-                        <div class="form-group">
-                            <label>per qty amount Entry</label>
-                            <input type="text" id="per_qty_amt" name="per_qty_amt" value="<?php echo isset($per_qty_amt) ? $per_qty_amt : ''; ?>" class="form-control" maxlength="15" <?php echo isset($_GET['del_id']) ? 'disabled' : ''; ?>>
-                        </div>
-                        <div class="form-group">
-                            <label>Total Amount</label>
-                            <input type="text" id="total_Amount" name="total_Amount" value="<?php echo isset($total_Amount) ? $total_Amount : ''; ?>" class="form-control" maxlength="15" <?php echo isset($_GET['del_id']) ? 'disabled' : ''; ?>>
-                        </div>
-                        <div class="form-group">
-                            <label>Total Amount</label>
-                            <input type="text" id="total_gst_Amount" name="total_gst_Amount"  value="<?php echo isset($total_gst_Amount) ? $total_gst_Amount : ''; ?>" class="form-control" maxlength="15" <?php echo isset($_GET['del_id']) ? 'disabled' : ''; ?>>
-                        </div>
+                        <button type="button" id="add_more" class="badge badge-primary">Add Product</button>
+                            <br>
+                            <br>
                         <a class="badge badge-primary" href="In_ward.php">Reset</a>
                         <button id="save" type="submit" name="<?php echo isset($_GET['edit_id']) ? 'update' : (isset($_GET['del_id']) ? 'delete' : 'in_ward_submit'); ?>" value="submit" class="badge badge-success">Submit</button>
                     </form>
@@ -199,28 +133,58 @@ include("include/config.php");
                 <?php
                 $user_name="Admin";
                 $ip_address="10.10";
-                if(isset($_POST['in_ward_submit'])){     
+                if (isset($_POST['in_ward_submit'])) {     
 
                     $in_ward_date = $_POST['in_ward_date'];
                     $supplier_id = $_POST['supplier_id'];
-                    $product_id = $_POST['product_id'];
-                    $category_id = $_POST['category_id'];
-                    $unit = $_POST['unit'];
-                    $gst = $_POST['gst'];
-                    $qty = $_POST['qty'];
-                    $per_qty_amt = $_POST['per_qty_amt'];
-                    $total_Amount = $_POST['total_Amount'];
-                    $total_gst_Amount = $_POST['total_gst_Amount'];
+                
+                    $products = [
+                        'product_id' => $_POST['product_id'] ?? [],
+                        'category_id' => $_POST['category_id'] ?? [],
+                        'unit' => $_POST['unit'] ?? [],
+                        'gst' => $_POST['gst'] ?? [],
+                        'qty' => $_POST['qty'] ?? [],
+                        'per_qty_amt' => $_POST['per_qty_amt'] ?? [],
+                        'total_Amount' => $_POST['total_Amount'] ?? [],
+                        'total_gst_Amount' => $_POST['total_gst_Amount'] ?? []
+                    ];
+                
+                    $sel_in_max_ward_code = "SELECT COALESCE(MAX(in_ward_code), 0) + 1 AS next_in_ward_code FROM in_ward WHERE del_flag IS NULL";
+                    $res_in_ward_max = mysqli_query($dbcon1, $sel_in_max_ward_code) or die("in_ward Retrieval Error!");
+                
+                    while ($team = mysqli_fetch_array($res_in_ward_max)) {
+                        $max_inward_code = $team['next_in_ward_code'];
 
-                    $insert_qry = "INSERT INTO in_ward (in_ward_date,supplier_id, product_id, category_id, unit, gst,qty,per_qty_amt,total_Amount,total_gst_Amount,isactive,ins_username,ins_ipaddress,ins_date) VALUES ('$in_ward_date','$supplier_id', '$product_id', '$category_id', '$unit','$gst','$qty','$per_qty_amt','$total_Amount','$total_gst_Amount','1','$user_name','$ip_address',now())";
-                    $res_insert_qry = mysqli_query($dbcon1, $insert_qry);
 
-                    if($res_insert_qry){
+                        $insert_qry = "INSERT INTO in_ward (in_ward_date,in_ward_code, supplier_id, isactive, ins_username, ins_ipaddress, ins_date) VALUES ('$in_ward_date','$max_inward_code', '$supplier_id', '1', '$user_name', '$ip_address', now())";
+                        $res_insert_qry = mysqli_query($dbcon1, $insert_qry);
+
+                        $last_inserted_id = mysqli_insert_id($dbcon1);
+                
+                        foreach ($products['product_id'] as $index => $product_id) {
+                            $product_id_var = htmlspecialchars($product_id);
+                            $category_id_var = htmlspecialchars($products['category_id'][$index]);
+                            $unit_var = htmlspecialchars($products['unit'][$index]);
+                            $gst_var = htmlspecialchars($products['gst'][$index]) . "%";
+                            $qty_var = htmlspecialchars($products['qty'][$index]);
+                            $amount_per_qty_var = htmlspecialchars($products['per_qty_amt'][$index]);
+                            $total_amount_var = htmlspecialchars($products['total_Amount'][$index]);
+                            $total_gst_amount_var = htmlspecialchars($products['total_gst_Amount'][$index]);
+                                              
+
+                                $insert_qry_product = "INSERT INTO in_ward_product (in_ward_id,in_ward_date,in_ward_code, supplier_id, product_id, category_id, unit, gst, qty, per_qty_amt, total_Amount, total_gst_Amount, isactive, ins_username, ins_ipaddress, ins_date) VALUES ('$last_inserted_id','$in_ward_date','$max_inward_code', '$supplier_id', '$product_id_var', '$category_id_var', '$unit_var', '$gst_var', '$qty_var', '$amount_per_qty_var', '$total_amount_var', '$total_gst_amount_var', '1', '$user_name', '$ip_address', now())";
+                                $res_insert_qry_product = mysqli_query($dbcon1, $insert_qry_product);
+                            
+                        }
+                    }
+                
+                    if ($res_insert_qry_product) {
                         echo "<script>alert('In Ward successfully'); window.location.href='In_ward.php';</script>";
                     } else {
                         echo "Check Insert Query";
                     }
                 }
+                
 
                 if(isset($_POST['update'])){
                     $edit_id = $_GET['edit_id'];
@@ -321,7 +285,7 @@ include("include/config.php");
                 <!-- Backend Form End -->
 
                 <!-- Data tables start -->
-                <div class="pd-20 card-box mb-30">
+                <div class="pd-20 card-box mb-30" style="display:none;">
                     <div class="clearfix mb-20">
                         <div class="pull-left">
                             <h4 class="text-blue h4">inWard Details</h4>
@@ -374,7 +338,7 @@ include("include/config.php");
                 </div>
                 <!-- Data tables end -->
             </div>
-            <?php include 'footer.php'; ?>
+            <?php //include 'footer.php'; ?>
         </div>
     </div>
 
@@ -435,75 +399,247 @@ include("include/config.php");
         });
 		
         // Validate phone number function
-        const inputField = document.querySelector('#unit');
-        inputField.addEventListener('keydown', (event) => {
-            const allowedKeys = ['Backspace', 'ArrowLeft', 'ArrowRight', 'Delete'];
-            if (!/[0-9]/.test(event.key) && !allowedKeys.includes(event.key)) {
-                event.preventDefault();
-            }
-        });
+        // const inputField = document.querySelector('#unit');
+        // inputField.addEventListener('keydown', (event) => {
+        //     const allowedKeys = ['Backspace', 'ArrowLeft', 'ArrowRight', 'Delete'];
+        //     if (!/[0-9]/.test(event.key) && !allowedKeys.includes(event.key)) {
+        //         event.preventDefault();
+        //     }
+        // });
 
       
 
-        $('#product_id').change(function(event) {
-    event.preventDefault(); // Prevent the default form submission
+//         $('#product_id').change(function(event) {
+//     event.preventDefault(); // Prevent the default form submission
 
-    var product_id = $('#product_id').val();
+//     var product_id = $('#product_id').val();
 
-    $.ajax({
-        url: "in_ward_ajax.php",
-        method: "POST",
-        data: { product_id: product_id },
-        dataType: "json",
-        success: function(data) {
-            if (data.status === 'success') {
-                // Update the category dropdown with the received HTML options
-                $('#category_id').html(data.options);
-                $('#unit').val(data.unit);
-                $('#gst').val(data.gst);
-            } 
+//     $.ajax({
+//         url: "in_ward_ajax.php",
+//         method: "POST",
+//         data: { product_id: product_id },
+//         dataType: "json",
+//         success: function(data) {
+//             if (data.status === 'success') {
+//                 // Update the category dropdown with the received HTML options
+//                 $('#category_id').html(data.options);
+//                 $('#unit').val(data.unit);
+//                 $('#gst').val(data.gst);
+//             } 
 
-        }
-    });
-});
+//         }
+//     });
+// });
     </script>
-    	<script>
-  $(document).ready(function() {
-    function calculateSum() {
-        // Get quantity and price per quantity
-        var qty = Math.ceil(document.getElementById('qty').value) || 0;
-        var per_qty_amt = parseFloat(document.getElementById("per_qty_amt").value) || 0;
-        
-        // Calculate the base price
-        var basePrice = qty * per_qty_amt;
-        
-        // Get GST rate (you need to define or retrieve this value)
-        var gstRate = parseFloat(document.getElementById("gst").value) || 0;
-
-        // Function to calculate GST and total price
-        function calculateGST(basePrice, gstRate) {
-            var gstAmount = (basePrice * gstRate) / 100;
-            var totalPrice = basePrice + gstAmount;
-            return {
-                gstAmount: gstAmount,
-                totalPrice: totalPrice
-            };
-        }
-
-        // Calculate GST and total amount
-        var result = calculateGST(basePrice, gstRate);
-
-        // Set the final value (total amount including GST) in the DOM
-        document.getElementById('total_Amount').value = result.totalPrice.toFixed(2); // Assuming there's an input field with id 'total_Amount'
-
-        // Optionally, if you want to display the GST amount separately:
-        document.getElementById('total_gst_Amount').value = result.gstAmount.toFixed(2); // Assuming there's an input field with id 'gst_Amount'
+    	
+<style>
+    .form-control.custom-size {
+        height: 30px; /* Adjust the height */
+        font-size: 12px; /* Adjust the font size */
+        padding: 5px; /* Adjust padding */
     }
 
-    // Attach the calculateSum function to the input event for both input fields
-    $('#qty, #per_qty_amt, #gst').on('input', calculateSum);
-});
+    .form-group-label {
+        font-weight: bold;
+        font-size: 14px; /* Adjust label size */
+    }
 
+    .remove-row {
+        margin-top: 24px; /* Align remove button with the input fields */
+    }
+    .active-row {
+    background-color: #f0f8ff; /* Light blue background color */
+    border: 1px solid #00aaff; /* Border to make the row stand out */
+    padding: 10px;
+    border-radius: 5px;
+}
+
+</style>
+<script>
+    $(document).ready(function() {
+        function calculateSum(rowId) {
+            // Ensure the rowId is a valid number
+            rowId = parseInt(rowId, 10);
+            if (isNaN(rowId)) {
+                console.error('Invalid row ID:', rowId);
+                return;
+            }
+            
+            // Get quantity and price per quantity for the specific row
+            var qty = Math.ceil($('#qty_' + rowId).val()) || 0;
+            var per_qty_amt = parseFloat($('#per_qty_amt_' + rowId).val()) || 0;
+            
+            // Calculate the base price
+            var basePrice = qty * per_qty_amt;
+            
+            // Get GST rate for the specific row
+            var gstRate = parseFloat($('#gst_' + rowId).val()) || 0;
+
+            // Function to calculate GST and total price
+            function calculateGST(basePrice, gstRate) {
+                var gstAmount = (basePrice * gstRate) / 100;
+                var totalPrice = basePrice + gstAmount;
+                return {
+                    gstAmount: gstAmount,
+                    totalPrice: totalPrice
+                };
+            }
+
+            // Calculate GST and total amount
+            var result = calculateGST(basePrice, gstRate);
+
+            // Set the final value (total amount including GST) in the DOM for the specific row
+            $('#total_Amount_' + rowId).val(result.totalPrice.toFixed(2));
+            $('#total_gst_Amount_' + rowId).val(result.gstAmount.toFixed(2));
+        }
+
+        // Event delegation to handle dynamic elements
+        $('#append_div').on('input', 'input[id^="qty_"], input[id^="per_qty_amt_"], input[id^="gst_"]', function() {
+            // Extract row ID from the input field ID
+            var id = $(this).attr('id');
+            var idParts = id.split('_');
+            
+           // console.log('ID:', id); // Log ID to debug
+           // console.log('ID Parts:', idParts); // Log parts to debug
+            
+            // Handle different patterns and extract row ID
+            var rowId = idParts.length > 2 ? idParts[idParts.length - 1] : null;
+
+            if (rowId) {
+               // console.log('Row ID:', rowId); // Debugging message
+                calculateSum(rowId);
+            } else {
+                //console.error('Failed to extract row ID from ID:', id);
+            }
+        });
+    });
 </script>
+
+<script>
+    $(document).ready(function() {
+        var counter = 0; // Initialize a counter
+
+        function updateRowIds() {
+            // Reassign IDs to rows and update the counter
+            $('#append_div .form-row').each(function(index) {
+                var newCounter = index + 1;
+                $(this).attr('id', 'row_' + newCounter);
+
+                $(this).find('[id^="product_id_"]').attr('id', 'product_id_' + newCounter);
+                $(this).find('[id^="category_id_"]').attr('id', 'category_id_' + newCounter);
+                $(this).find('[id^="unit_"]').attr('id', 'unit_' + newCounter);
+                $(this).find('[id^="gst_"]').attr('id', 'gst_' + newCounter);
+                $(this).find('[id^="qty_"]').attr('id', 'qty_' + newCounter);
+                $(this).find('[id^="per_qty_amt_"]').attr('id', 'per_qty_amt_' + newCounter);
+                $(this).find('[id^="total_Amount_"]').attr('id', 'total_Amount_' + newCounter);
+                $(this).find('[id^="total_gst_Amount_"]').attr('id', 'total_gst_Amount_' + newCounter);
+                $(this).find('.remove-row').attr('data-row-id', newCounter);
+            });
+            counter = $('#append_div .form-row').length; // Update the counter
+        }
+
+        $('#add_more').click(function() {
+            counter++; // Increment the counter each time a new row is added
+            
+            var newFormGroup = `
+                <div class="form-row" id="row_${counter}">
+                    <div class="form-group col-md-2">
+                        <label class="form-group-label" for="product_id_${counter}">Product Name</label>
+                        <select name="product_id[]" id="product_id_${counter}" class="form-control form-control-sm custom-size">
+                            <option value="">Select product Name</option>
+                            <?php
+                            $query = "SELECT * FROM product WHERE del_flag IS NULL";
+                            $execute_qry = mysqli_query($dbcon1, $query) or die("product Retrieval Error!");
+
+                            while ($team = mysqli_fetch_array($execute_qry)) {
+                                $product_id = $team['product_id'];
+                                $product_name = $team['product_name'];
+                            ?>
+                                <option value="<?php echo $product_id; ?>"><?php echo $product_name; ?></option>
+                            <?php
+                            }
+                            ?>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-2">
+                        <label class="form-group-label" for="category_id_${counter}">Category Name</label>
+                        <select name="category_id[]" id="category_id_${counter}" class="form-control form-control-sm custom-size">
+                            <option value="">Select category Name</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-1">
+                        <label class="form-group-label" for="unit_${counter}">Unit</label>
+                        <input type="text" name="unit[]" id="unit_${counter}" class="form-control form-control-sm custom-size" maxlength="15">
+                    </div>
+                    <div class="form-group col-md-1">
+                        <label class="form-group-label" for="gst_${counter}">GST</label>
+                        <input type="text" name="gst[]" id="gst_${counter}" class="form-control form-control-sm custom-size" maxlength="15">
+                    </div>
+                    <div class="form-group col-md-1">
+                        <label class="form-group-label" for="qty_${counter}">Qty</label>
+                        <input type="text" name="qty[]" id="qty_${counter}" class="form-control form-control-sm custom-size" maxlength="15">
+                    </div>
+                    <div class="form-group col-md-2">
+                        <label class="form-group-label" for="per_qty_amt_${counter}">Per Qty Amount</label>
+                        <input type="text" name="per_qty_amt[]" id="per_qty_amt_${counter}" class="form-control form-control-sm custom-size" maxlength="15">
+                    </div>
+                    <div class="form-group col-md-2">
+                        <label class="form-group-label" for="total_Amount_${counter}">Total Amount</label>
+                        <input type="text" name="total_Amount[]" id="total_Amount_${counter}" class="form-control form-control-sm custom-size" maxlength="15">
+                    </div>
+                    <div class="form-group col-md-2">
+                        <label class="form-group-label" for="total_gst_Amount_${counter}">Total GST Amount</label>
+                        <input type="text" name="total_gst_Amount[]" id="total_gst_Amount_${counter}" class="form-control form-control-sm custom-size" maxlength="15">
+                    </div>
+                    <div class="form-group col-md-1">
+                        <button type="button" class="btn btn-danger btn-sm remove-row" data-row-id="${counter}">Remove</button>
+                    </div>
+                </div>
+            `;
+
+            // Append the new form group
+            $(newFormGroup).appendTo('#append_div'); 
+        });
+
+        // Event delegation to handle dynamic elements
+        $('#append_div').on('focusin', '.form-row', function() {
+            $(this).addClass('active-row');
+        });
+
+        $('#append_div').on('focusout', '.form-row', function() {
+            $(this).removeClass('active-row');
+        });
+
+        $('#append_div').on('click', '.remove-row', function() {
+            $(this).closest('.form-row').remove();
+            updateRowIds(); // Update IDs after removing a row
+        });
+
+        // AJAX call when product_id changes
+        $('#append_div').on('change', 'select[id^="product_id_"]', function() {
+            var rowId = $(this).attr('id').split('_')[2]; // Extract the row ID
+            var product_id = $(this).val();
+
+            $.ajax({
+                url: "in_ward_ajax.php",
+                method: "POST",
+                data: { product_id: product_id },
+                dataType: "json",
+                success: function(data) {
+                    if (data.status === 'success') {
+                        // Update the category dropdown with the received HTML options
+                        $('#category_id_' + rowId).html(data.options);
+                        $('#unit_' + rowId).val(data.unit);
+                        $('#gst_' + rowId).val(data.gst);
+                        $('#category_id_' + rowId).val(data.category_id);
+                    }
+                }
+            });
+        });
+    });
+</script>
+
+
+
 </body>
 </html>

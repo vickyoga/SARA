@@ -1,8 +1,8 @@
 <div class="left-side-bar">
 	<div class="brand-logo">
 		<a href="index.php">
-				<img src="vendors/images/logo.png" alt="" class="dark-logo">
-				<img src="vendors/images/logo.png" alt="" class="light-logo">
+				<!-- <img src="vendors/images/logo.png" alt="" class="dark-logo"> -->
+				<!-- <img src="vendors/images/logo.png" alt="" class="light-logo"> -->
 			</a>
 	
 		<div class="close-sidebar" data-toggle="left-sidebar-close">
@@ -46,7 +46,7 @@
 						</li> -->
 						<li><a href="In_ward.php">IN-WARD</a>
 						</li>
-						<li><a href="a_h_en.php">Purchase Report</a>
+						<li><a href="In_ward_Report.php">IN-WARD Report</a>
 						</li>
 						<!-- <li><a href="a_h_hs_group.php">Heritage HS Group</a>
 						</li>
@@ -75,9 +75,9 @@
 						<ul class="submenu">
 						<!-- <li><a href="strategy.php">Strategy</a>
 						</li> -->
-						<li><a href="b_s_b.php">Work</a>
+						<li><a href="b_s_b.php">OUT-WARD</a>
 						</li>
-						<li><a href="b_s_s.php"> Work Report</a>
+						<li><a href="b_s_s.php">OUT-WARD Report</a>
 						</li>
 						<!-- <li><a href="verticals.php">Verticals</a>
 						</li> -->
@@ -95,12 +95,15 @@
 					<ul class="submenu">
 						<!-- <li><a href="footwear.php">Footwear</a> 
 						</li> -->
-						<li><a href="v_f_b.php">Add Cilent</a>
+						<li><a href="Client.php">Add Cilent</a>
+						</li>
+						<li><a href="ProductType.php">Add Product Type</a>
+						</li>
+						<li><a href="Client_Product_linking.php">Client & Product Linking </a>
 						</li>
 						<li><a href="v_f.php"> Client Report</a>
 						</li>
-						<!-- <li><a href="v_f_l.php">Footwear List</a>
-						</li> -->
+					
 						<!-- <li><a href="appearls_accessories.php">Appearls & Accessories</a>
 						</li> -->
 						<!-- <li><a href=" v_a_b.php">Appearls & Accessories Banner</a>
@@ -136,8 +139,12 @@
 						<ul class="submenu">
 						<!-- <li><a href="strategy.php">Strategy</a>
 						</li> -->
-						<li><a href="i_v_b.php">Add store </a>
+						<li><a href="Store_Entry.php">Add store </a>
 						</li>
+
+						<li><a href="Store_Client_linking.php">Store &  Client Linking </a>
+						</li>
+
 						<li><a href="i_r_f.php">Store Report </a>
 						</li>
 						<!-- <li><a href="i_r_a.php"> Investor Relations - Annual Reports</a>
@@ -194,11 +201,11 @@
 						<ul class="submenu">
 						<!-- <li><a href="strategy.php">Strategy</a>
 						</li> -->
-						<li><a href="n_b.php"> Add Designer</a>
+						<li><a href="Designer_Entry.php"> Add Designer</a>
 						</li>
 						<li><a href="n_l_n.php"> Designer list</a>
 						</li>
-						<li><a href="n_blog.php"> Design Work statu </a>
+						<li><a href="n_blog.php"> Design Work Status </a>
 						</li>
 					</ul>
 				</li>
@@ -220,7 +227,7 @@
 						<ul class="submenu">
 						<!-- <li><a href="strategy.php">Strategy</a>
 						</li> -->
-						<li><a href="c_b.php">Add printer</a>
+						<li><a href="Printer_Entry.php">Add printer</a>
 						</li>
 					
 						<li><a href="ca_our_memt.php"> Printer Reports</a>

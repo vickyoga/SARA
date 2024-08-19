@@ -54,12 +54,12 @@ include("include/config.php");
                     <div class="row">
                         <div class="col-md-6 col-sm-12">
                             <div class="title">
-                                <h4>Supplier Entry Form</h4>
+                                <h4>Store Entry Form</h4>
                             </div>
                             <nav aria-label="breadcrumb" role="navigation">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="index.php">Home</a></li>
-                                    <li class="breadcrumb-item active" aria-current="page"><a href="SupplierEntry.php">Supplier</a></li>
+                                    <li class="breadcrumb-item active" aria-current="page"><a href="Store_Entry.php">Store</a></li>
                                 </ol>
                             </nav>
                         </div>
@@ -68,13 +68,10 @@ include("include/config.php");
                 <?php
                 if(isset($_GET['edit_id']) || isset($_GET['del_id'])){
                     $id = isset($_GET['edit_id']) ? $_GET['edit_id'] : $_GET['del_id'];
-                    $sel_user = "SELECT * FROM supplier WHERE supplier_id = $id";
+                    $sel_user = "SELECT * FROM store WHERE store_id = $id";
                     $res_sel_user = mysqli_query($dbcon1, $sel_user);
                     while($row = mysqli_fetch_assoc($res_sel_user)){
-                        $name = $row['name'];
-                        $mobile = $row['mobile'];
-                        $gst = $row['gst'];
-                        $bank = $row['bank'];
+                        $store_name = $row['store_name'];
                         $address = $row['address'];
                     }
                 }
@@ -83,50 +80,37 @@ include("include/config.php");
                 <div class="pd-20 card-box mb-30">
                     <div class="clearfix">
                         <div class="pull-left">
-                            <h4 class="text-blue h4">Supplier Details</h4>
+                            <h4 class="text-blue h4">Store Details</h4>
                         </div>
                     </div>
                     <form id="supplierForm" method="post" autocomplete="off" enctype="multipart/form-data">
 
                         <div class="form-group">
-                            <label>Name</label>
-                            <input type="text" id="name" name="name" value="<?php echo isset($name) ? $name : ''; ?>" class="form-control" maxlength="40" <?php echo isset($_GET['del_id']) ? 'disabled' : ''; ?>>
+                            <label>Store Name</label>
+                            <input type="text" id="name" name="name" value="<?php echo isset($store_name) ? $store_name : ''; ?>" class="form-control" maxlength="40" <?php echo isset($_GET['del_id']) ? 'disabled' : ''; ?>>
                         </div>
+                       
                         <div class="form-group">
-                            <label>Mobile</label>
-                            <input type="text" id="mobile" name="mobile" value="<?php echo isset($mobile) ? $mobile : ''; ?>" class="form-control" maxlength="10" <?php echo isset($_GET['del_id']) ? 'disabled' : ''; ?>>
-                        </div>
-                        <div class="form-group">
-                            <label>GST Number</label>
-                            <input type="text" id="gst" name="gst" value="<?php echo isset($gst) ? $gst : ''; ?>" class="form-control" maxlength="15" <?php echo isset($_GET['del_id']) ? 'disabled' : ''; ?>>
-                        </div>
-                        <div class="form-group">
-                            <label>Bank</label>
-                            <textarea class="form-control" id="bank" name="bank" rows="1" <?php echo isset($_GET['del_id']) ? 'disabled' : ''; ?>><?php echo isset($bank) ? $bank : ''; ?></textarea>
-                        </div>
-                        <div class="form-group">
-                            <label>Address</label>
+                            <label>Store Address</label>
                             <textarea class="form-control" id="address" name="address" rows="1" <?php echo isset($_GET['del_id']) ? 'disabled' : ''; ?>><?php echo isset($address) ? $address : ''; ?></textarea>
                         </div>
-                        <a class="badge badge-primary" href="SupplierEntry.php">Reset</a>
-                        <button id="save" type="submit" name="<?php echo isset($_GET['edit_id']) ? 'update' : (isset($_GET['del_id']) ? 'delete' : 'supplier_submit'); ?>" value="submit" class="badge badge-success">Submit</button>
+
+                        <a class="badge badge-primary" href="Store_Entry.php">Reset</a>
+                        <button id="save" type="submit" name="<?php echo isset($_GET['edit_id']) ? 'update' : (isset($_GET['del_id']) ? 'delete' : 'store_submit'); ?>" value="submit" class="badge badge-success">Submit</button>
                     </form>
                 </div>
                 <?php
                 $user_name="Admin";
                 $ip_address="10.10";
-                if(isset($_POST['supplier_submit'])){
+                if(isset($_POST['store_submit'])){
                     $name = $_POST['name'];
-                    $mobile = $_POST['mobile'];
-                    $gst = $_POST['gst'];
-                    $bank = $_POST['bank'];
                     $address = $_POST['address'];
 
-                    $insert_qry = "INSERT INTO supplier (name, mobile, gst, bank, address,isactive,ins_username,ins_ipaddress,ins_date) VALUES ('$name', '$mobile', '$gst', '$bank', '$address','1','$user_name','$ip_address',now())";
+                    $insert_qry = "INSERT INTO store (store_name, address,isactive,ins_username,ins_ipaddress,ins_date) VALUES ('$name','$address','1','$user_name','$ip_address',now())";
                     $res_insert_qry = mysqli_query($dbcon1, $insert_qry);
 
                     if($res_insert_qry){
-                        echo "<script>alert('Supplier Added successfully'); window.location.href='SupplierEntry.php';</script>";
+                        echo "<script>alert('Store Added successfully'); window.location.href='Store_Entry.php';</script>";
                     } else {
                         echo "Check Insert Query";
                     }
@@ -135,16 +119,13 @@ include("include/config.php");
                 if(isset($_POST['update'])){
                     $edit_id = $_GET['edit_id'];
                     $name = $_POST['name'];
-                    $mobile = $_POST['mobile'];
-                    $gst = $_POST['gst'];
-                    $bank = $_POST['bank'];
                     $address = $_POST['address'];
 
-                    $update_qry = "UPDATE supplier SET name='$name', mobile='$mobile', gst='$gst', bank='$bank', address='$address',upd_username='$user_name',upd_ipaddress='$ip_address',upd_date=now() WHERE supplier_id='$edit_id'";
+                    $update_qry = "UPDATE store SET store_name='$name', address='$address',upd_username='$user_name',upd_ipaddress='$ip_address',upd_date=now() WHERE store_id='$edit_id'";
                     $res_update_qry = mysqli_query($dbcon1, $update_qry);
 
                     if($res_update_qry){
-                        echo "<script>alert('Supplier Detail Updated successful'); window.location.href='SupplierEntry.php';</script>";
+                        echo "<script>alert('Store Detail Updated successful'); window.location.href='Store_Entry.php';</script>";
                     } else {
                         echo "Check Update Query";
                     }
@@ -153,11 +134,11 @@ include("include/config.php");
                 if(isset($_POST['delete'])){
                     $edit_id = $_GET['del_id'];
 
-                    $delete_qry = "UPDATE supplier SET del_flag='Y',del_username='$user_name',del_ipaddress='$ip_address',del_date=now() WHERE supplier_id='$edit_id'";
+                    $delete_qry = "UPDATE store SET del_flag='Y',del_username='$user_name',del_ipaddress='$ip_address',del_date=now() WHERE store_id='$edit_id'";
                     $res_delete_qry = mysqli_query($dbcon1, $delete_qry);
 
                     if($res_delete_qry){
-                        echo "<script>alert('Supplier Permanently Delete successful'); window.location.href='SupplierEntry.php';</script>";
+                        echo "<script>alert('Store Permanently Delete successful'); window.location.href='Store_Entry.php';</script>";
                     } else {
                         echo "Supplier Query check";
                     }
@@ -168,35 +149,35 @@ include("include/config.php");
                  $id_fp=$_REQUEST['upd']; 
                     if(!empty($id_fp))
                     {
-                      $query = "SELECT isactive FROM `supplier` WHERE  `supplier_id`=".$id_fp."";
+                      $query = "SELECT isactive FROM `store` WHERE  `store_id`=".$id_fp."";
                       $execute_qry = mysqli_query($dbcon1,$query)or die("Sustainability Box Icon Retriew Error!");          
                       while($team = mysqli_fetch_array($execute_qry)) {
                       $active_record = $team['isactive'];
                       if ($active_record =='0')
                       {
-                        $insq1 = mysqli_query($dbcon1,"UPDATE `supplier` SET `isactive`='1' WHERE `supplier_id`=".$id_fp."") or die(mysqli_Error($dbcon1));
+                        $insq1 = mysqli_query($dbcon1,"UPDATE `store` SET `isactive`='1' WHERE `store_id`=".$id_fp."") or die(mysqli_Error($dbcon1));
                         if($insq1)
                         {
-                          echo('<script type="text/javascript">alert(" Activated Sucessfully"); window.location="SupplierEntry.php";</script>');
+                          echo('<script type="text/javascript">alert(" Activated Sucessfully"); window.location="Store_Entry.php";</script>');
                          // $post_msg = "client Delete successfully";
                         }
                         else
                         {
-                          echo('<script type="text/javascript">alert(" Activation Problems"); window.location="SupplierEntry.php";</script>');
+                          echo('<script type="text/javascript">alert(" Activation Problems"); window.location="Store_Entry.php";</script>');
                           //$err_msg = "client Delete Problems";
                         }
                         }
                       else
                       {
-                          $insq1 = mysqli_query($dbcon1,"UPDATE supplier SET isactive ='0'  WHERE `supplier_id`=".$id_fp."") or die(mysqli_Error($dbcon1));
+                          $insq1 = mysqli_query($dbcon1,"UPDATE store SET isactive ='0'  WHERE `store_id`=".$id_fp."") or die(mysqli_Error($dbcon1));
                         if($insq1)
                         {
-                          echo('<script type="text/javascript">alert(" UnActivated Sucessfully"); window.location="SupplierEntry.php";</script>');
+                          echo('<script type="text/javascript">alert(" UnActivated Sucessfully"); window.location="Store_Entry.php";</script>');
                          // $post_msg = "client Delete successfully";
                         }
                         else
                         {
-                          echo('<script type="text/javascript">alert("UnActivated Problems"); window.location="SupplierEntry.php";</script>');
+                          echo('<script type="text/javascript">alert("UnActivated Problems"); window.location="Store_Entry.php";</script>');
                           //$err_msg = "client Delete Problems";
                         }
                       }
@@ -211,47 +192,38 @@ include("include/config.php");
                 <div class="pd-20 card-box mb-30">
                     <div class="clearfix mb-20">
                         <div class="pull-left">
-                            <h4 class="text-blue h4">Suppliers Details</h4>
+                            <h4 class="text-blue h4">Store Details</h4>
                         </div>
                     </div>
                     <table id="supplierTable" class="display table table-bordered">
                         <thead>
                             <tr class="table-primary">
                                 <th scope="col">SL.No.</th>
-                                <th scope="col">Name</th>
-                                <th scope="col">Mobile</th>
-                                <th scope="col">GST Number</th>
-                                <th scope="col">Bank</th>
+                                <th scope="col">Store Name</th>
                                 <th scope="col">Address</th>
                                 <th scope="col">Action</th>
                             </tr>
                         </thead>
                         <tbody>
                             <?php
-                            $query = "SELECT * FROM supplier where del_flag is null";
-                            $execute_qry = mysqli_query($dbcon1, $query) or die("Supplier Retrieval Error!");
+                            $query = "SELECT * FROM store where del_flag is null";
+                            $execute_qry = mysqli_query($dbcon1, $query) or die("store Retrieval Error!");
                             $i = 0;
                             while ($team = mysqli_fetch_array($execute_qry)) {
                                 $i++;
-                                $supplier_id = $team['supplier_id'];
-                                $name = $team['name'];
-                                $mobile = $team['mobile'];
-                                $gst = $team['gst'];
-                                $bank = $team['bank'];
+                                $store_id = $team['store_id'];
+                                $store_name = $team['store_name'];
                                 $address = $team['address'];
                                 $active_record = $team['isactive'];
                             ?>
                             <tr>
                                 <th scope="row"><?php echo $i; ?></th>
-                                <td><?php echo $name; ?></td>
-                                <td><?php echo $mobile; ?></td>
-                                <td><?php echo $gst; ?></td>
-                                <td><?php echo $bank; ?></td>
+                                <td><?php echo $store_name; ?></td>
                                 <td><?php echo $address; ?></td>
                                 <td>
-                                <a href='?upd=<?php echo $supplier_id; ?>'><?php if($active_record == 0) { ?><span class="badge badge-danger">InActive</span><?php } else{ ?><span class="badge badge-success">Active</span><?php } ?></a>&nbsp; 
-                                    <a class="badge badge-warning" href="SupplierEntry.php?edit_id=<?php echo $supplier_id; ?>">Edit</a>
-                                    <a class="badge badge-danger" href="SupplierEntry.php?del_id=<?php echo $supplier_id; ?>">Delete</a>
+                                <a href='?upd=<?php echo $store_id; ?>'><?php if($active_record == 0) { ?><span class="badge badge-danger">InActive</span><?php } else{ ?><span class="badge badge-success">Active</span><?php } ?></a>&nbsp; 
+                                    <a class="badge badge-warning" href="Store_Entry.php?edit_id=<?php echo $store_id; ?>">Edit</a>
+                                    <a class="badge badge-danger" href="Store_Entry.php?del_id=<?php echo $store_id; ?>">Delete</a>
                                 </td>
                             </tr>
                             <?php } ?>
@@ -277,38 +249,21 @@ include("include/config.php");
 		$(document).on('click', '#save', function(event) {
 		
             var name = $('#name').val();
-			var mobile = $('#mobile').val();
-            var gst = $('#gst').val();
-            var bank = $('#bank').val();
             var address = $('#address').val();
 		
 			if(name==''){
-				alert('Enter Supplier Name');
+				alert('Enter Store Name');
 				$('#name').focus();
 				return false;
 			}
-			if(mobile==''){
-				alert('Enter Mobile Number');
-				$('#mobile').focus();
-				return false;
-			}
-			if(gst==''){
-				alert('Enter GST Number');
-				$('#gst').focus();
-				return false;
-			}
-			if(bank==''){
-				alert('Enter Bank Details');
-				$('#bank').focus();
-				return false;
-			}
+			
 			if(address==''){
-				alert('Enter Address');
+				alert('Enter Store Address');
 				$('#address').focus();
 				return false;
 			}
            
-            if (name === '' || mobile === '' || gst === '' || bank === '' || address === '') {
+            if (name === '' || address === '') {
                 e.preventDefault();
                 alert('Please fill in all required fields.');
             }

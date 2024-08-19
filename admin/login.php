@@ -38,7 +38,7 @@ include("include/login_action.php");
 		<div class="container-fluid d-flex justify-content-between align-items-center">
 			<div class="brand-logo">
 				<a href="login.php">
-					<img src="vendors/images/sara logo.jpeg" alt="">
+					<!-- <img src="vendors/images/sara logo.jpeg" alt=""> -->
 				</a>
 			</div>
 			<!-- <div class="login-menu">

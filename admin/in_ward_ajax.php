@@ -26,7 +26,7 @@ if (isset($_POST['product_id'])) {
         $options .= '<option value="' . $category_id . '">' . $category_name . '</option>';
     }
 
-    $response = ["status" => "success", "options" => $options,"unit"=>$unit,"gst"=>$gst];
+    $response = ["status" => "success", "options" => $options,"unit"=>$unit,"gst"=>$gst,"category_id"=>$category_id];
 }
 
 echo json_encode($response);
